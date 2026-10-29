@@ -1,4 +1,4 @@
-// Versión 1 (v1) - Prototipo con fallos iniciales de usabilidad
+// Versión 1 (v1) - Prototipo con fallos iniciales de usabilidad (Matrícula)
 const screens = [...document.querySelectorAll('.screen')];
 const form = document.querySelector('#taskForm');
 const confirmButton = document.querySelector('#confirm');
