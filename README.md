@@ -14,7 +14,8 @@
 | :--- | :--- | :--- |
 | **Elizabeth De la Cruz** | [@Elizabeth1925](https://github.com/Elizabeth1925) | Líder de equipo, Prototipado v2, Lógica de recuperación ante conflictos e integración |
 | **Sebastián Vaca** | [@SebastianVaca](https://github.com) | Arquitectura de información, Accesibilidad WCAG (ARIA) y Foco por teclado |
-| **Verónica Ana** | [@anavero162](https://github.com) | Diagnóstico emocional, Sesión de pruebas de usabilidad y Trazabilidad de requisitos |
+| **Verónica Jaque** | [@anavero162](https://github.com) | Diagnóstico emocional, Sesión de pruebas de usabilidad y Trazabilidad de requisitos |
+| **Andrew Lara ** | [@andrewLara](https://github.com) | Trazabilidad |
 
 ---
 
