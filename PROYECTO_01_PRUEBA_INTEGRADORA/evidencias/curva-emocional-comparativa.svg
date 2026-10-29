@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="100%" height="100%" style="background:#ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <!-- Título -->
+  <text x="450" y="35" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">Comparativa de Curva Emocional UX: v1 (Inicial) vs v2 (Refinada)</text>
+  <text x="450" y="58" text-anchor="middle" font-size="14" fill="#64748b">Sistema de Matrícula Universitaria — Grupo 4 (Variante F)</text>
+
+  <!-- Leyenda -->
+  <line x1="280" y1="85" x2="320" y2="85" stroke="#dc2626" stroke-width="3" stroke-dasharray="5,5"/>
+  <circle cx="300" cy="85" r="4" fill="#dc2626"/>
+  <text x="330" y="89" font-size="13" fill="#dc2626" font-weight="bold">Versión 1 (v1 - Con fallos)</text>
+
+  <line x1="550" y1="85" x2="590" y2="85" stroke="#16a34a" stroke-width="3"/>
+  <circle cx="570" cy="85" r="4" fill="#16a34a"/>
+  <text x="600" y="89" font-size="13" fill="#16a34a" font-weight="bold">Versión 2 (v2 - Con incidencias resueltas)</text>
+
+  <!-- Ejes y Líneas Guía -->
+  <!-- Eje Y: +2 (y=130), +1 (y=190), 0 (y=250), -1 (y=310), -2 (y=370) -->
+  <line x1="120" y1="130" x2="840" y2="130" stroke="#f1f5f9" stroke-width="1.5"/>
+  <text x="105" y="135" text-anchor="end" font-size="12" font-weight="bold" fill="#16a34a">+2 (Alta Confianza)</text>
+
+  <line x1="120" y1="190" x2="840" y2="190" stroke="#f1f5f9" stroke-width="1.5"/>
+  <text x="105" y="195" text-anchor="end" font-size="12" fill="#475569">+1 (Positiva)</text>
+
+  <line x1="120" y1="250" x2="840" y2="250" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="105" y="255" text-anchor="end" font-size="12" font-weight="bold" fill="#64748b">0 (Neutral)</text>
+
+  <line x1="120" y1="310" x2="840" y2="310" stroke="#f1f5f9" stroke-width="1.5"/>
+  <text x="105" y="315" text-anchor="end" font-size="12" fill="#e11d48">-1 (Incertidumbre)</text>
+
+  <line x1="120" y1="370" x2="840" y2="370" stroke="#f1f5f9" stroke-width="1.5"/>
+  <text x="105" y="375" text-anchor="end" font-size="12" font-weight="bold" fill="#dc2626">-2 (Frustración Crítica)</text>
+
+  <!-- Puntos Eje X (Touchpoints 1 a 8):
+       TP1: 150
+       TP2: 245
+       TP3: 340 (MoT 1)
+       TP4: 435
+       TP5: 530
+       TP6: 625
+       TP7: 720 (MoT 2)
+       TP8: 815
+  -->
+
+  <!-- Etiquetas Eje X -->
+  <text x="150" y="405" text-anchor="middle" font-size="11" fill="#334155">1. Acceso</text>
+  <text x="245" y="405" text-anchor="middle" font-size="11" fill="#334155">2. Catálogo</text>
+  <text x="340" y="405" text-anchor="middle" font-size="11" font-weight="bold" fill="#b91c1c">3. Prerreq. (MoT)</text>
+  <text x="435" y="405" text-anchor="middle" font-size="11" fill="#334155">4. Paralelos</text>
+  <text x="530" y="405" text-anchor="middle" font-size="11" fill="#334155">5. Datos</text>
+  <text x="625" y="405" text-anchor="middle" font-size="11" fill="#334155">6. Revisión</text>
+  <text x="720" y="405" text-anchor="middle" font-size="11" font-weight="bold" fill="#b91c1c">7. Conflicto (MoT)</text>
+  <text x="815" y="405" text-anchor="middle" font-size="11" fill="#334155">8. Comprobante</text>
+
+  <!-- Curva v1 (Roja, punteada)
+       TP1: 0 (250)
+       TP2: 0 (250)
+       TP3: -2 (370)
+       TP4: 0 (250)
+       TP5: +1 (190)
+       TP6: +1 (190)
+       TP7: -2 (370)
+       TP8: +2 (130)
+  -->
+  <polyline points="150,250 245,250 340,370 435,250 530,190 625,190 720,370 815,130" 
+            fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="6,6"/>
+  <circle cx="150" cy="250" r="5" fill="#dc2626"/>
+  <circle cx="245" cy="250" r="5" fill="#dc2626"/>
+  <circle cx="340" cy="370" r="6" fill="#dc2626"/>
+  <circle cx="435" cy="250" r="5" fill="#dc2626"/>
+  <circle cx="530" cy="190" r="5" fill="#dc2626"/>
+  <circle cx="625" cy="190" r="5" fill="#dc2626"/>
+  <circle cx="720" cy="370" r="6" fill="#dc2626"/>
+  <circle cx="815" cy="130" r="5" fill="#dc2626"/>
+
+  <!-- Curva v2 (Verde, continua)
+       TP1: +1 (190)
+       TP2: +1 (190)
+       TP3: +1 (190)
+       TP4: +1 (190)
+       TP5: +1 (190)
+       TP6: +2 (130)
+       TP7: +1 (190)
+       TP8: +2 (130)
+  -->
+  <polyline points="150,190 245,190 340,190 435,190 530,190 625,130 720,190 815,130" 
+            fill="none" stroke="#16a34a" stroke-width="3.5"/>
+  <circle cx="150" cy="190" r="5" fill="#16a34a"/>
+  <circle cx="245" cy="190" r="5" fill="#16a34a"/>
+  <circle cx="340" cy="190" r="6" fill="#16a34a"/>
+  <circle cx="435" cy="190" r="5" fill="#16a34a"/>
+  <circle cx="530" cy="190" r="5" fill="#16a34a"/>
+  <circle cx="625" cy="130" r="5" fill="#16a34a"/>
+  <circle cx="720" cy="190" r="6" fill="#16a34a"/>
+  <circle cx="815" cy="130" r="6" fill="#16a34a"/>
+
+  <!-- Anotaciones de Momento de Verdad -->
+  <rect x="290" y="325" width="100" height="22" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
+  <text x="340" y="340" text-anchor="middle" font-size="10" font-weight="bold" fill="#991b1b">Bloqueo v1 (-2)</text>
+
+  <rect x="670" y="325" width="100" height="22" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
+  <text x="720" y="340" text-anchor="middle" font-size="10" font-weight="bold" fill="#991b1b">Cupo perdido v1 (-2)</text>
+
+  <rect x="660" y="155" width="120" height="22" rx="4" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+  <text x="720" y="170" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">Recuperación v2 (+1)</text>
+</svg>
