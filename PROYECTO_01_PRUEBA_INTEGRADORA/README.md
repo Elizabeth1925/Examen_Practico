@@ -13,7 +13,7 @@
 | :--- | :--- | :--- |
 | **Elizabeth De la Cruz** | [@Elizabeth1925](https://github.com/Elizabeth1925) | Coordinación, Prototipado v2, Interacción y Lógica de Recuperación |
 | **Sebastián Vaca** | [@Sebas2h](https://github.com/Sebas2h) | Arquitectura de Información, Accesibilidad WCAG (ARIA) y Foco por Teclado |
-| **Verónica Ana** | [@ArteMisa82](https://github.com/ArteMisa82) | Diagnóstico Emocional, Sesión de Pruebas UX y Trazabilidad Heurística |
+| **Verónica Jaque** | [@ArteMisa82](https://github.com/ArteMisa82) | Diagnóstico Emocional, Sesión de Pruebas UX y Trazabilidad Heurística |
 | **Andrew Lara** | [@alara7u7](https://github.com/alara7u7) | Desarrollo de prototipos, Adaptación de casos IHC y Soporte técnico |
 
 ---
