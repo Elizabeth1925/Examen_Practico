@@ -5,70 +5,72 @@
 **TEMA:** INFORME TÉCNICO DE LA PRUEBA PRÁCTICA INTEGRADORA — MATRÍCULA UNIVERSITARIA (SGA)  
 **EQUIPO:** GRUPO 4 (VARIANTE F)  
 **INTEGRANTES:**  
-- Elizabeth De la Cruz (@Elizabeth1925)  
-- Sebastián Vaca (@SebastianVaca)  
-- Verónica Ana (@anavero162)  
-- Andrew Lara (@AndrewLara)  
+- Elizabeth De la Cruz (@Elizabeth1925) — Coordinación y Prototipado v2  
+- Sebastián Vaca (@SebastianVaca) — Arquitectura y Accesibilidad WCAG  
+- Verónica Ana (@anavero162) — Diagnóstico UX y Pruebas Empíricas  
+- Andrew Lara (@alara8778) — Desarrollo y Soporte Técnico  
 **FECHA:** 29 de octubre de 2026  
+**CALIFICACIÓN MÁXIMA:** 2,00 Puntos  
 
 ---
 
 # ÍNDICE GENERAL DEL DOCUMENTO
-1. Resumen Ejecutivo y Alcance del Caso (Variante F)
-2. Fase 1: Diagnóstico Emocional, Heurísticas y Touchpoints
-3. Fase 2: Arquitectura de la Información, Requisitos y Wireframes
+1. Resumen Ejecutivo y Caso Asignado (Variante F)
+2. Fase 1: Diagnóstico UX, Heurísticas y Evaluación Emocional
+3. Fase 2: Arquitectura de Información, Requisitos y Wireframes
 4. Fase 3: Prototipado Web, Interacción y Accesibilidad (v1 vs v2)
 5. Fase 4: Pruebas Empíricas de Usabilidad con Observación y Métricas
-6. Fase 5: Resolución de Incidencias Sorpresa (Tarjetas 11 y 12)
-7. Trazabilidad de GitHub (Issues, Ramas, Pull Request y Merge)
-8. Guía para la Defensa Individual y Respuestas al Docente
+6. Fase 5: Resolución de Incidencias Sorpresa (Tarjetas 11 y 12 / Requisito R7)
+7. Trazabilidad de GitHub (Issues, Ramas, Pull Request y Merge Conflict)
+8. Guía Oficial para la Defensa Individual y Respuestas al Docente
+9. Conclusiones y Recomendaciones
 
 ---
 
-# DiagnÃ³stico UX y EvaluaciÃ³n Emocional
+# Diagnóstico UX y Evaluación Emocional
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
 **Equipo:** Grupo 4  
-**Caso de Estudio:** Variante F â€” Sistema de MatrÃ­cula Universitaria (SGA UTA)  
+**Caso de Estudio:** Variante F — Sistema de Matrícula Universitaria (SGA UTA)  
 
 ---
 
 ## 1. Mapa de Touchpoints y Curva Emocional Inicial (Estimada)
 
-Se mapeÃ³ el recorrido del estudiante durante el proceso crÃ­tico de inscripciÃ³n de asignaturas en el sistema acadÃ©mico. La escala de emociÃ³n oscila entre **-2 (FrustraciÃ³n / Desconcierto severo)** y **+2 (Confianza / Logro alto)**.
+Se mapeó el recorrido del estudiante durante el proceso crítico de inscripción de asignaturas en el sistema académico. La escala de emoción oscila entre **-2 (Frustración / Desconcierto severo)** y **+2 (Confianza / Logro alto)**.
 
-| # | Touchpoint (Punto de Contacto) | EmociÃ³n Estimada (-2 a +2) | Riesgo Identificado |
+| # | Touchpoint (Punto de Contacto) | Emoción Estimada (-2 a +2) | Riesgo Identificado |
 | :-: | :--- | :-: | :--- |
-| **1** | **Acceso al portal SGA y selecciÃ³n de perÃ­odo** | `0` (Neutral) | Lentitud del servidor al autenticar y sobrecarga visual en la pÃ¡gina inicial. |
-| **2** | **Consulta de malla curricular y materias abiertas** | `+1` (Positiva) | InformaciÃ³n dispersa sobre prerrequisitos y crÃ©ditos aprobados. |
-| **3** | **SelecciÃ³n de asignatura con prerrequisito pendiente** *(Momento de Verdad 1)* | `-2` (FrustraciÃ³n crÃ­tica) | **Fallo H5/H1:** La asignatura aparenta estar habilitada para inscripciÃ³n; tras intentar inscribirse, se muestra un error tardÃ­o sin explicar quÃ© prerrequisito falta ni dar alternativas. |
-| **4** | **RevisiÃ³n de cupos por paralelo** | `0` (Incertidumbre) | **Fallo H1:** Los cupos mostrados no son en tiempo real; el estudiante confÃ­a en un nÃºmero desactualizado. |
-| **5** | **Ingreso de datos del estudiante y modalidad** | `+1` (Aceptable) | PÃ©rdida de datos si se recarga la pÃ¡gina por error. |
-| **6** | **Pantalla de RevisiÃ³n previa** | `+1` (Alivio temporal) | Ausencia de verificaciÃ³n de concurrencia de cupo antes del clic final. |
-| **7** | **PulsaciÃ³n de "Confirmar MatrÃ­cula" con cupo agotado** *(Momento de Verdad 2)* | `-2` (Ansiedad mÃ¡xima) | **Fallo H9/H3:** El cupo fue tomado milisegundos antes por otro usuario; la pantalla se bloquea, se borra el formulario y el alumno queda sin materia ni alternativas. |
-| **8** | **ObtenciÃ³n del Comprobante Oficial de MatrÃ­cula** | `+2` (SatisfacciÃ³n plena) | SensaciÃ³n de seguridad, trazabilidad acadÃ©mica y cierre de la tarea. |
+| **1** | **Acceso al portal SGA y selección de período** | `0` (Neutral) | Lentitud del servidor al autenticar y sobrecarga visual en la página inicial. |
+| **2** | **Consulta de malla curricular y materias abiertas** | `+1` (Positiva) | Información dispersa sobre prerrequisitos y créditos aprobados. |
+| **3** | **Selección de asignatura con prerrequisito pendiente** *(Momento de Verdad 1)* | `-2` (Frustración crítica) | **Fallo H5/H1:** La asignatura aparenta estar habilitada para inscripción; tras intentar inscribirse, se muestra un error tardío sin explicar qué prerrequisito falta ni dar alternativas. |
+| **4** | **Revisión de cupos por paralelo** | `0` (Incertidumbre) | **Fallo H1:** Los cupos mostrados no son en tiempo real; el estudiante confía en un número desactualizado. |
+| **5** | **Ingreso de datos del estudiante y modalidad** | `+1` (Aceptable) | Pérdida de datos si se recarga la página por error. |
+| **6** | **Pantalla de Revisión previa** | `+1` (Alivio temporal) | Ausencia de verificación de concurrencia de cupo antes del clic final. |
+| **7** | **Pulsación de "Confirmar Matrícula" con cupo agotado** *(Momento de Verdad 2)* | `-2` (Ansiedad máxima) | **Fallo H9/H3:** El cupo fue tomado milisegundos antes por otro usuario; la pantalla se bloquea, se borra el formulario y el alumno queda sin materia ni alternativas. |
+| **8** | **Obtención del Comprobante Oficial de Matrícula** | `+2` (Satisfacción plena) | Sensación de seguridad, trazabilidad académica y cierre de la tarea. |
 
-### ðŸ“Œ Momentos de Verdad (Moments of Truth - MoT)
-1. **Momento de Verdad 1 (Touchpoint 3 - ValidaciÃ³n de Prerrequisitos):** El instante en que el estudiante decide matricular una materia. Si el sistema oculta el bloqueo hasta el final, genera frustraciÃ³n inmediata y abandono.
-2. **Momento de Verdad 2 (Touchpoint 7 - ConfirmaciÃ³n y Concurrencia de Cupos):** El momento culminante de la transacciÃ³n acadÃ©mica. La incertidumbre sobre si la matrÃ­cula se consolidÃ³ o si el cupo se perdiÃ³ de forma irreversible determina la confianza en el sistema.
-
----
-
-## 2. AnÃ¡lisis Emocional Multinivel (Don Norman)
-
-- **Nivel Visceral:** En la versiÃ³n inicial (v1), la interfaz satura con texto denso, colores de alerta agresivos (rojos chillones) y falta de jerarquÃ­a tipogrÃ¡fica. En la versiÃ³n corregida (v2), se utiliza una paleta institucional limpia, alto contraste para baja visiÃ³n, espaciado generoso y badges de estado con Ã­conos comprensibles al primer vistazo.
-- **Nivel Conductual:** El usuario valora la eficiencia y la predictibilidad. En v2 se garantiza la conservaciÃ³n permanente del borrador en memoria local (`localStorage`), navegaciÃ³n 100% por teclado (`Tab`, `Enter`, `Escape`) y retroalimentaciÃ³n inmediata sobre la disponibilidad real de cupos y prerrequisitos sin tener que llegar al final.
-- **Nivel Reflexivo:** El estudiante finaliza el proceso con la certeza jurÃ­dica y acadÃ©mica de su inscripciÃ³n mediante un cÃ³digo hash de comprobante (`MAT-UTA-XXXXXX`), sintiendo que tuvo el control del proceso en todo momento y no fue vÃ­ctima de un fallo arbitrario del sistema.
+### 📌 Momentos de Verdad (Moments of Truth - MoT)
+1. **Momento de Verdad 1 (Touchpoint 3 - Validación de Prerrequisitos):** El instante en que el estudiante decide matricular una materia. Si el sistema oculta el bloqueo hasta el final, genera frustración inmediata y abandono.
+2. **Momento de Verdad 2 (Touchpoint 7 - Confirmación y Concurrencia de Cupos):** El momento culminante de la transacción académica. La incertidumbre sobre si la matrícula se consolidó o si el cupo se perdió de forma irreversible determina la confianza en el sistema.
 
 ---
 
-## 3. Hallazgos HeurÃ­sticos de Usabilidad (Jakob Nielsen)
+## 2. Análisis Emocional Multinivel (Don Norman)
 
-| ID Hallazgo | HeurÃ­stica de Nielsen | DescripciÃ³n del Problema Detectado | Criterio de CorrecciÃ³n Aplicado en v2 |
+- **Nivel Visceral:** En la versión inicial (v1), la interfaz satura con texto denso, colores de alerta agresivos (rojos chillones) y falta de jerarquía tipográfica. En la versión corregida (v2), se utiliza una paleta institucional limpia, alto contraste para baja visión, espaciado generoso y badges de estado con íconos comprensibles al primer vistazo.
+- **Nivel Conductual:** El usuario valora la eficiencia y la predictibilidad. En v2 se garantiza la conservación permanente del borrador en memoria local (`localStorage`), navegación 100% por teclado (`Tab`, `Enter`, `Escape`) y retroalimentación inmediata sobre la disponibilidad real de cupos y prerrequisitos sin tener que llegar al final.
+- **Nivel Reflexivo:** El estudiante finaliza el proceso con la certeza jurídica y académica de su inscripción mediante un código hash de comprobante (`MAT-UTA-XXXXXX`), sintiendo que tuvo el control del proceso en todo momento y no fue víctima de un fallo arbitrario del sistema.
+
+---
+
+## 3. Hallazgos Heurísticos de Usabilidad (Jakob Nielsen)
+
+| ID Hallazgo | Heurística de Nielsen | Descripción del Problema Detectado | Criterio de Corrección Aplicado en v2 |
 | :--- | :--- | :--- | :--- |
-| **H-01** | **H1: Visibilidad del estado del sistema** | Los cupos de los paralelos cambian en el servidor pero la interfaz no notifica la disponibilidad actualizada, induciendo a errores de concurrencia. AdemÃ¡s, los usuarios de lectores de pantalla no se enteran de las alertas dinÃ¡micas. | ImplementaciÃ³n de regiones vivas ARIA (`aria-live="polite"` y `aria-live="assertive"`), badges con estados actualizados en vivo y foco programÃ¡tico directo al mensaje. |
-| **H-02** | **H5: PrevenciÃ³n de errores / H3: Control del usuario** | El botÃ³n "Inscribir" se muestra activo incluso si el estudiante no cumple con la materia correlativa anterior. Al fallar, el formulario borraba la selecciÃ³n previa. | Alerta contextual anticipada que desglosa el prerrequisito faltante, preserva los campos ya completados y ofrece un botÃ³n de redirecciÃ³n inmediata a materias alternativas habilitadas. |
-| **H-03** | **H9: Reconocer, diagnosticar y recuperarse de errores** | Los mensajes de error eran genÃ©ricos (*"Error en el servidor"* o *"OperaciÃ³n rechazada"*), culpando al usuario y sin camino de escape ni soluciÃ³n viable. | Mensaje empÃ¡tico y constructivo que explica: *"El Ãºltimo cupo del Paralelo A fue tomado recientemente. Tus datos estÃ¡n a salvo. Puedes optar por el Paralelo B (disponible) o registrarte en lista de espera."* |
+| **H-01** | **H1: Visibilidad del estado del sistema** | Los cupos de los paralelos cambian en el servidor pero la interfaz no notifica la disponibilidad actualizada, induciendo a errores de concurrencia. Además, los usuarios de lectores de pantalla no se enteran de las alertas dinámicas. | Implementación de regiones vivas ARIA (`aria-live="polite"` y `aria-live="assertive"`), badges con estados actualizados en vivo y foco programático directo al mensaje. |
+| **H-02** | **H5: Prevención de errores / H3: Control del usuario** | El botón "Inscribir" se muestra activo incluso si el estudiante no cumple con la materia correlativa anterior. Al fallar, el formulario borraba la selección previa. | Alerta contextual anticipada que desglosa el prerrequisito faltante, preserva los campos ya completados y ofrece un botón de redirección inmediata a materias alternativas habilitadas. |
+| **H-03** | **H9: Reconocer, diagnosticar y recuperarse de errores** | Los mensajes de error eran genéricos (*"Error en el servidor"* o *"Operación rechazada"*), culpando al usuario y sin camino de escape ni solución viable. | Mensaje empático y constructivo que explica: *"El último cupo del Paralelo A fue tomado recientemente. Tus datos están a salvo. Puedes optar por el Paralelo B (disponible) o registrarte en lista de espera."* |
 
 ---
 
@@ -76,113 +78,113 @@ Se mapeÃ³ el recorrido del estudiante durante el proceso crÃ­tico de inscrip
 
 Para cumplir con las reglas de autenticidad y trazabilidad del repositorio, se documentan los 3 Issues fundamentales:
 
-### ðŸ“Œ Issue #1
-- **TÃ­tulo:** `fix(ux): Bloqueo silencioso al seleccionar materia con prerrequisito pendiente`
+### 📌 Issue #1
+- **Título:** `fix(ux): Bloqueo silencioso al seleccionar materia con prerrequisito pendiente`
 - **Severidad:** Alta (Bloqueante)
 - **Responsable:** `@Elizabeth1925` (Elizabeth De la Cruz)
 - **Evidencia:** El alumno intenta inscribir *Sistemas Distribuidos* sin haber aprobado *Redes*; el sistema falla al final sin indicar la causa.
-- **Criterio de Cierre:** Mostrar banner contextual anticipado que informe la materia faltante y proporcione un botÃ³n para seleccionar materias habilitadas (*IHC* o *IngenierÃ­a de Software*) sin perder los datos personales. Enlazado al commit final.
+- **Criterio de Cierre:** Mostrar banner contextual anticipado que informe la materia faltante y proporcione un botón para seleccionar materias habilitadas (*IHC* o *Ingeniería de Software*) sin perder los datos personales. Enlazado al commit final.
 
-### ðŸ“Œ Issue #2
-- **TÃ­tulo:** `feat(a11y): Soporte de lector de pantalla y alertas en vivo para cupos de matrÃ­cula`
+### 📌 Issue #2
+- **Título:** `feat(a11y): Soporte de lector de pantalla y alertas en vivo para cupos de matrícula`
 - **Severidad:** Media (Accesibilidad)
-- **Responsable:** `@SebastianVaca` (SebastiÃ¡n Vaca)
-- **Evidencia:** Personas con discapacidad visual o usuarios que navegan exclusivamente con teclado no reciben notificaciÃ³n de los cambios en los cupos de paralelo.
-- **Criterio de Cierre:** AÃ±adir atributos semÃ¡nticos `aria-live="assertive"`, `aria-describedby` para cada campo y anillo de foco visible (`outline: 3px solid #0056b3`).
+- **Responsable:** `@SebastianVaca` (Sebastián Vaca)
+- **Evidencia:** Personas con discapacidad visual o usuarios que navegan exclusivamente con teclado no reciben notificación de los cambios en los cupos de paralelo.
+- **Criterio de Cierre:** Añadir atributos semánticos `aria-live="assertive"`, `aria-describedby` para cada campo y anillo de foco visible (`outline: 3px solid #0056b3`).
 
-### ðŸ“Œ Issue #3
-- **TÃ­tulo:** `fix(recovery): PÃ©rdida irreversible de selecciÃ³n tras conflicto de concurrencia en cupo`
-- **Severidad:** CrÃ­tica (Integridad de datos)
-- **Responsable:** `@anavero162` (VerÃ³nica Ana)
-- **Evidencia:** Cuando dos alumnos intentan tomar el Ãºltimo cupo al mismo tiempo, el que llega un instante despuÃ©s pierde toda la informaciÃ³n ingresada.
-- **Criterio de Cierre:** Conservar el borrador en `localStorage`, mostrar modal accesible de resoluciÃ³n de conflicto y ofrecer cambio automÃ¡tico a paralelo disponible o lista de espera.
+### 📌 Issue #3
+- **Título:** `fix(recovery): Pérdida irreversible de selección tras conflicto de concurrencia en cupo`
+- **Severidad:** Crítica (Integridad de datos)
+- **Responsable:** `@anavero162` (Verónica Ana)
+- **Evidencia:** Cuando dos alumnos intentan tomar el último cupo al mismo tiempo, el que llega un instante después pierde toda la información ingresada.
+- **Criterio de Cierre:** Conservar el borrador en `localStorage`, mostrar modal accesible de resolución de conflicto y ofrecer cambio automático a paralelo disponible o lista de espera.
 
 
 ---
 
 # Requisitos Observables y Funcionales
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** Sistema de MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Sistema de Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
 ---
 
-## ðŸ“‹ CatÃ¡logo de Requisitos Observables (RF-01 a RF-06 + R7 Incidencia)
+## 📋 Catálogo de Requisitos Observables (RF-01 a RF-06 + R7 Incidencia)
 
-| ID Requisito | Tipo | Enunciado del Requisito | Criterio de AceptaciÃ³n y ComprobaciÃ³n Observable |
+| ID Requisito | Tipo | Enunciado del Requisito | Criterio de Aceptación y Comprobación Observable |
 | :--- | :---: | :--- | :--- |
-| **RF-01** | Observable | **CatÃ¡logo de asignaturas y paralelos con disponibilidad visible.** | La interfaz presenta de forma clara las materias ofertadas, sus paralelos y el nÃºmero de cupos disponibles en tiempo real antes de iniciar la selecciÃ³n. |
+| **RF-01** | Observable | **Catálogo de asignaturas y paralelos con disponibilidad visible.** | La interfaz presenta de forma clara las materias ofertadas, sus paralelos y el número de cupos disponibles en tiempo real antes de iniciar la selección. |
 | **RF-02** | Accesible | **Operabilidad 100% por teclado y foco visible.** | Todos los controles (botones, selectores, campos de texto y enlaces) pueden enfocarse y accionarse mediante `Tab`, `Shift + Tab`, `Enter` y `Espacio`, contando con un indicador de foco visible de alto contraste (anillo de 3px). |
-| **RF-03** | Contextual | **ValidaciÃ³n en contexto de prerrequisitos sin revelaciÃ³n indebida (Tarjeta 11).** | Si se selecciona una asignatura que posea prerrequisitos acadÃ©micos pendientes, el sistema advierte inmediatamente mediante un mensaje asociado (`aria-describedby`), explicando la causa sin exponer datos ajenos y ofreciendo una ruta hacia materias habilitadas. |
-| **RF-04** | Preventivo | **Pantalla de revisiÃ³n y resumen antes de la confirmaciÃ³n.** | Antes de enviar la transacciÃ³n de matrÃ­cula a la base de datos, se presenta una pantalla de confirmaciÃ³n estructurada con el resumen de la asignatura, paralelo, horario y cÃ³digo del estudiante, con opciÃ³n de corregir o editar. |
-| **RF-05** | Tolerancia | **Persistencia de borrador ante fallo o error recuperable.** | Los datos ingresados por el estudiante se guardan localmente en memoria (`localStorage`). Si ocurre una interrupciÃ³n de red o fallo de validaciÃ³n, la informaciÃ³n permanece intacta y no se borra. |
-| **RF-06** | RetroalimentaciÃ³n | **EmisiÃ³n de comprobante oficial de matrÃ­cula accesible.** | Tras una confirmaciÃ³n exitosa, el sistema presenta un comprobante legible con un cÃ³digo hash Ãºnico de matrÃ­cula (`MAT-UTA-XXXXXX`), anunciado por lector de pantalla mediante regiÃ³n viva. |
-| **R7 (Incidencia)** | **Imprevisto** | **GestiÃ³n de conflicto de cupo concurrente y anuncio accesible (Tarjeta 12).** | Si el cupo seleccionado se agota en el momento de pulsar "Confirmar MatrÃ­cula", el sistema simula el conflicto, **evita una confirmaciÃ³n falsa**, actualiza el estado de disponibilidad mediante `aria-live="assertive"`, conserva todos los datos ingresados y ofrece alternativas inmediatas (Paralelo alternativo B o ingreso a Lista de Espera). |
+| **RF-03** | Contextual | **Validación en contexto de prerrequisitos sin revelación indebida (Tarjeta 11).** | Si se selecciona una asignatura que posea prerrequisitos académicos pendientes, el sistema advierte inmediatamente mediante un mensaje asociado (`aria-describedby`), explicando la causa sin exponer datos ajenos y ofreciendo una ruta hacia materias habilitadas. |
+| **RF-04** | Preventivo | **Pantalla de revisión y resumen antes de la confirmación.** | Antes de enviar la transacción de matrícula a la base de datos, se presenta una pantalla de confirmación estructurada con el resumen de la asignatura, paralelo, horario y código del estudiante, con opción de corregir o editar. |
+| **RF-05** | Tolerancia | **Persistencia de borrador ante fallo o error recuperable.** | Los datos ingresados por el estudiante se guardan localmente en memoria (`localStorage`). Si ocurre una interrupción de red o fallo de validación, la información permanece intacta y no se borra. |
+| **RF-06** | Retroalimentación | **Emisión de comprobante oficial de matrícula accesible.** | Tras una confirmación exitosa, el sistema presenta un comprobante legible con un código hash único de matrícula (`MAT-UTA-XXXXXX`), anunciado por lector de pantalla mediante región viva. |
+| **R7 (Incidencia)** | **Imprevisto** | **Gestión de conflicto de cupo concurrente y anuncio accesible (Tarjeta 12).** | Si el cupo seleccionado se agota en el momento de pulsar "Confirmar Matrícula", el sistema simula el conflicto, **evita una confirmación falsa**, actualiza el estado de disponibilidad mediante `aria-live="assertive"`, conserva todos los datos ingresados y ofrece alternativas inmediatas (Paralelo alternativo B o ingreso a Lista de Espera). |
 
 ---
 
-## ðŸ—ºï¸ Sitemap Estructurado del Proceso
+## 🗺️ Sitemap Estructurado del Proceso
 
 ```text
-SGA MatrÃ­cula (Inicio)
- â”œâ”€â”€ 1. Panel Informativo (PerÃ­odo AcadÃ©mico, Requisitos y Acceso Teclado)
- â”œâ”€â”€ 2. Formulario de SelecciÃ³n e InscripciÃ³n
- â”‚    â”œâ”€â”€ SelecciÃ³n de Asignatura (ValidaciÃ³n automÃ¡tica de prerrequisitos)
- â”‚    â”œâ”€â”€ SelecciÃ³n de Paralelo (Indicador de cupos en tiempo real)
- â”‚    â”œâ”€â”€ Datos del Estudiante (CÃ³digo y validaciÃ³n contextual)
- â”‚    â””â”€â”€ [AcciÃ³n Cancelar con confirmaciÃ³n segura]
- â”œâ”€â”€ 3. Pantalla de RevisiÃ³n Previa
- â”‚    â”œâ”€â”€ Resumen consolidado de la matrÃ­cula
- â”‚    â”œâ”€â”€ [BotÃ³n Editar / Modificar datos]
- â”‚    â””â”€â”€ [BotÃ³n Confirmar MatrÃ­cula]
- â”œâ”€â”€ 4. GestiÃ³n de Excepciones y Conflictos (R7 / Tarjetas 11 y 12)
- â”‚    â”œâ”€â”€ Rama A: Conflicto de Cupo Concurrente (Ofrecer Paralelo B / Lista de espera)
- â”‚    â””â”€â”€ Rama B: Prerrequisito Pendiente (RedirecciÃ³n a materia electiva habilitada)
- â””â”€â”€ 5. Pantalla de Resultado
-      â”œâ”€â”€ Estado de Ã‰xito: Comprobante oficial con cÃ³digo Ãºnico `MAT-UTA-XXXXXX`
-      â””â”€â”€ OpciÃ³n de Nueva MatrÃ­cula o Cierre de SesiÃ³n
+SGA Matrícula (Inicio)
+ ├── 1. Panel Informativo (Período Académico, Requisitos y Acceso Teclado)
+ ├── 2. Formulario de Selección e Inscripción
+ │    ├── Selección de Asignatura (Validación automática de prerrequisitos)
+ │    ├── Selección de Paralelo (Indicador de cupos en tiempo real)
+ │    ├── Datos del Estudiante (Código y validación contextual)
+ │    └── [Acción Cancelar con confirmación segura]
+ ├── 3. Pantalla de Revisión Previa
+ │    ├── Resumen consolidado de la matrícula
+ │    ├── [Botón Editar / Modificar datos]
+ │    └── [Botón Confirmar Matrícula]
+ ├── 4. Gestión de Excepciones y Conflictos (R7 / Tarjetas 11 y 12)
+ │    ├── Rama A: Conflicto de Cupo Concurrente (Ofrecer Paralelo B / Lista de espera)
+ │    └── Rama B: Prerrequisito Pendiente (Redirección a materia electiva habilitada)
+ └── 5. Pantalla de Resultado
+      ├── Estado de Éxito: Comprobante oficial con código único `MAT-UTA-XXXXXX`
+      └── Opción de Nueva Matrícula o Cierre de Sesión
 ```
 
 ---
 
-## ðŸ”€ User Flow (Flujo del Usuario con Rama de Ã‰xito y de Conflicto)
+## 🔀 User Flow (Flujo del Usuario con Rama de Éxito y de Conflicto)
 
 ```text
 [Inicio] 
-   â”‚
-   â–¼
-[Formulario de MatrÃ­cula]
-   â”‚
-   â”œâ”€â–º Â¿Tiene prerrequisito pendiente? (Tarjeta 11)
-   â”‚     â”œâ”€â–º SÃ: Muestra aviso contextual explicativo + botÃ³n "Elegir materia alternativa"
-   â”‚     â””â”€â–º NO: Permite continuar
-   â”‚
-   â–¼
-[Completar Paralelo y CÃ³digo de Estudiante]
-   â”‚
-   â”œâ”€â–º Â¿Campo vacÃ­o o invÃ¡lido? â”€â”€â–º [Marca campo + mensaje aria-describedby + Foco en error]
-   â”‚
-   â–¼
-[Pantalla de RevisiÃ³n]
-   â”‚
-   â–¼
-[Pulsar "Confirmar MatrÃ­cula"] â”€â”€â–º [Estado de Carga: Spinner y botÃ³n deshabilitado temporalmente]
-   â”‚
-   â”œâ”€â–º [RAMA DE CONFLICTO R7 / Tarjeta 12]:
-   â”‚     Cupo tomado concurrentemente por otro estudiante
-   â”‚     â”œâ”€ Preserva todos los datos en borrador
-   â”‚     â”œâ”€ RegiÃ³n aria-live anuncia: "El cupo del Paralelo A se agotÃ³ hace un instante"
-   â”‚     â”œâ”€ Ofrece opciones de recuperaciÃ³n:
-   â”‚     â”‚    â”œâ”€ Cambiar a Paralelo B (disponible)
-   â”‚     â”‚    â””â”€ Inscribirse en Lista de Espera con notificaciÃ³n
-   â”‚     â””â”€ Permite reintentar sin reescribir nada
-   â”‚
-   â””â”€â–º [RAMA DE Ã‰XITO]:
-         â”œâ”€ ConfirmaciÃ³n oficial registrada
-         â”œâ”€ Muestra cÃ³digo Ãºnico MAT-UTA-XXXXXX
-         â”œâ”€ Anuncio por lector de pantalla (aria-live="polite")
-         â””â”€ Limpieza controlada del borrador y opciÃ³n de finalizar
+   │
+   ▼
+[Formulario de Matrícula]
+   │
+   ├─► ¿Tiene prerrequisito pendiente? (Tarjeta 11)
+   │     ├─► SÍ: Muestra aviso contextual explicativo + botón "Elegir materia alternativa"
+   │     └─► NO: Permite continuar
+   │
+   ▼
+[Completar Paralelo y Código de Estudiante]
+   │
+   ├─► ¿Campo vacío o inválido? ──► [Marca campo + mensaje aria-describedby + Foco en error]
+   │
+   ▼
+[Pantalla de Revisión]
+   │
+   ▼
+[Pulsar "Confirmar Matrícula"] ──► [Estado de Carga: Spinner y botón deshabilitado temporalmente]
+   │
+   ├─► [RAMA DE CONFLICTO R7 / Tarjeta 12]:
+   │     Cupo tomado concurrentemente por otro estudiante
+   │     ├─ Preserva todos los datos en borrador
+   │     ├─ Región aria-live anuncia: "El cupo del Paralelo A se agotó hace un instante"
+   │     ├─ Ofrece opciones de recuperación:
+   │     │    ├─ Cambiar a Paralelo B (disponible)
+   │     │    └─ Inscribirse en Lista de Espera con notificación
+   │     └─ Permite reintentar sin reescribir nada
+   │
+   └─► [RAMA DE ÉXITO]:
+         ├─ Confirmación oficial registrada
+         ├─ Muestra código único MAT-UTA-XXXXXX
+         ├─ Anuncio por lector de pantalla (aria-live="polite")
+         └─ Limpieza controlada del borrador y opción de finalizar
 ```
 
 
@@ -190,225 +192,225 @@ SGA MatrÃ­cula (Inicio)
 
 # Matriz de Trazabilidad Completa
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
 ---
 
-## ðŸ”— Matriz Requisito â†’ Pantalla â†’ Flujo â†’ Componente â†’ Wireframe
+## 🔗 Matriz Requisito → Pantalla → Flujo → Componente → Wireframe
 
 | ID Req. | Requisito Observable | Pantalla / Vista | Paso en el User Flow | Componentes UI (Atomic Design) | Wireframe Asociado |
 | :---: | :--- | :--- | :--- | :--- | :---: |
-| **RF-01** | CatÃ¡logo de asignaturas y paralelos con disponibilidad visible | Pantalla 1: Inicio / Pantalla 2: Formulario | Inicio â†’ SelecciÃ³n | Lista desplegable `<select>`, badges de cupos, banner informativo | **WF-01 / WF-02** |
-| **RF-02** | Operabilidad 100% por teclado y foco visible | Todas las pantallas (1 a 4) | Todo el recorrido | Anillo de foco CSS (`:focus-visible`), botÃ³n saltar al contenido (`skip-link`), eventos `keydown` | **WF-01 a WF-04** |
-| **RF-03** | ValidaciÃ³n de prerrequisitos contextual sin revelar datos ajenos (T11) | Pantalla 2: Formulario | SelecciÃ³n de asignatura | Banner de advertencia contextual, botÃ³n selector de materia habilitada, texto `aria-describedby` | **WF-02** |
-| **RF-04** | Pantalla de revisiÃ³n y resumen antes de confirmar | Pantalla 3: RevisiÃ³n | RevisiÃ³n previa | Contenedor de resumen en dos columnas, botÃ³n secundario "Modificar", botÃ³n primario "Confirmar" | **WF-04** |
-| **RF-05** | Persistencia de borrador ante fallo o error recuperable | Pantalla 2: Formulario / Pantalla 4: Resultado | Error / Reintento | Almacenamiento local `localStorage`, manejador `input` y `change`, funciÃ³n `restoreDraft` | **WF-03** |
-| **RF-06** | EmisiÃ³n de comprobante oficial de matrÃ­cula accesible | Pantalla 4: Resultado | Ã‰xito y comprobante | Contenedor de comprobante, cÃ³digo hash dinÃ¡mico `MAT-UTA-XXXXXX`, regiÃ³n `aria-live="polite"` | **WF-04** |
-| **R7 (Incidencia)** | GestiÃ³n de conflicto de cupos concurrentes y anuncio accesible (T12) | Pantalla 3: RevisiÃ³n â†’ Pantalla 4: Conflicto | Confirmar â†’ Conflicto de cupo | Alerta `role="alert"` (`aria-live="assertive"`), botones de alternativa ("Cambiar a Paralelo B" / "Lista de espera") | **WF-03 (Incidencia)** |
+| **RF-01** | Catálogo de asignaturas y paralelos con disponibilidad visible | Pantalla 1: Inicio / Pantalla 2: Formulario | Inicio → Selección | Lista desplegable `<select>`, badges de cupos, banner informativo | **WF-01 / WF-02** |
+| **RF-02** | Operabilidad 100% por teclado y foco visible | Todas las pantallas (1 a 4) | Todo el recorrido | Anillo de foco CSS (`:focus-visible`), botón saltar al contenido (`skip-link`), eventos `keydown` | **WF-01 a WF-04** |
+| **RF-03** | Validación de prerrequisitos contextual sin revelar datos ajenos (T11) | Pantalla 2: Formulario | Selección de asignatura | Banner de advertencia contextual, botón selector de materia habilitada, texto `aria-describedby` | **WF-02** |
+| **RF-04** | Pantalla de revisión y resumen antes de confirmar | Pantalla 3: Revisión | Revisión previa | Contenedor de resumen en dos columnas, botón secundario "Modificar", botón primario "Confirmar" | **WF-04** |
+| **RF-05** | Persistencia de borrador ante fallo o error recuperable | Pantalla 2: Formulario / Pantalla 4: Resultado | Error / Reintento | Almacenamiento local `localStorage`, manejador `input` y `change`, función `restoreDraft` | **WF-03** |
+| **RF-06** | Emisión de comprobante oficial de matrícula accesible | Pantalla 4: Resultado | Éxito y comprobante | Contenedor de comprobante, código hash dinámico `MAT-UTA-XXXXXX`, región `aria-live="polite"` | **WF-04** |
+| **R7 (Incidencia)** | Gestión de conflicto de cupos concurrentes y anuncio accesible (T12) | Pantalla 3: Revisión → Pantalla 4: Conflicto | Confirmar → Conflicto de cupo | Alerta `role="alert"` (`aria-live="assertive"`), botones de alternativa ("Cambiar a Paralelo B" / "Lista de espera") | **WF-03 (Incidencia)** |
 
 ---
 
-## ðŸ“Œ JustificaciÃ³n de Trazabilidad para la EvaluaciÃ³n
+## 📌 Justificación de Trazabilidad para la Evaluación
 
-1. **GarantÃ­a de no regresiÃ³n:** La adiciÃ³n del requisito **R7 (Incidencia Sorpresa de Tarjeta 12 y 11)** no destruye los flujos previos de RF-01 a RF-06; los amplÃ­a agregando una bifurcaciÃ³n de recuperaciÃ³n ante estados no previstos.
-2. **Defensa ante el evaluador:** Cada elemento visible en la interfaz tiene un origen formal en los requisitos y un reflejo directo en los wireframes y el cÃ³digo JavaScript.
+1. **Garantía de no regresión:** La adición del requisito **R7 (Incidencia Sorpresa de Tarjeta 12 y 11)** no destruye los flujos previos de RF-01 a RF-06; los amplía agregando una bifurcación de recuperación ante estados no previstos.
+2. **Defensa ante el evaluador:** Cada elemento visible en la interfaz tiene un origen formal en los requisitos y un reflejo directo en los wireframes y el código JavaScript.
 
 
 ---
 
 # Inventario de Componentes UI (Atomic Design)
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
-El diseÃ±o del sistema de matrÃ­cula se estructura mediante la metodologÃ­a **Atomic Design**, asegurando consistencia, accesibilidad WCAG 2.1 AA y modularidad.
+El diseño del sistema de matrícula se estructura mediante la metodología **Atomic Design**, asegurando consistencia, accesibilidad WCAG 2.1 AA y modularidad.
 
 ---
 
-## 1. Ãtomos (Elementos base indivisibles)
-- **TipografÃ­a y Textos:** Etiquetas `<label>` con asociaciÃ³n `for`, textos descriptivos `id="*-help"`, y tÃ­tulos jerÃ¡rquicos `<h1>`, `<h2>`.
-- **Campos de Entrada:** Inputs de texto `<input id="studentCode">`, selectores desplegables `<select>` con indicaciÃ³n de cupos.
-- **Botones de AcciÃ³n:** BotÃ³n primario (`.primary`), secundario (`.secondary`), destructivo (`.danger`) y botones alternativos de resoluciÃ³n rÃ¡pida (`.alternative`).
+## 1. Átomos (Elementos base indivisibles)
+- **Tipografía y Textos:** Etiquetas `<label>` con asociación `for`, textos descriptivos `id="*-help"`, y títulos jerárquicos `<h1>`, `<h2>`.
+- **Campos de Entrada:** Inputs de texto `<input id="studentCode">`, selectores desplegables `<select>` con indicación de cupos.
+- **Botones de Acción:** Botón primario (`.primary`), secundario (`.secondary`), destructivo (`.danger`) y botones alternativos de resolución rápida (`.alternative`).
 - **Indicadores de Estado:** Badges de disponibilidad (ej. `Cupos: 2`, `Agotado`), spinner SVG animado para procesamiento no bloqueante.
 - **Indicador de Foco:** Anillo CSS de alto contraste (`outline: 3px solid #0056b3; outline-offset: 2px`).
 
 ---
 
-## 2. MolÃ©culas (Combinaciones funcionales de Ã¡tomos)
-- **Campo de Formulario Validado:** CombinaciÃ³n de `<label>`, `<select>` o `<input>`, y `<p class="error" id="*-error">` vinculado mediante `aria-describedby`.
-- **Banner Contextual de Prerrequisitos (Tarjeta 11):** Contenedor con Ã­cono de advertencia, descripciÃ³n de la materia correlativa faltante y botÃ³n directo *"Seleccionar IHC (Habilitada)"*.
-- **Grupo de Acciones:** Barra horizontal con botÃ³n *"Regresar"*, *"Cancelar borrador"* y *"Continuar a revisiÃ³n"*.
-- **Fila de Resumen:** Par clave-valor accesible (`<strong>Asignatura:</strong> <span>InteracciÃ³n Humano-Computador</span>`).
-- **Alerta Accesible de Conflicto de Cupo (Tarjeta 12):** NotificaciÃ³n dinÃ¡mica con `role="alert"` y `aria-live="assertive"` con opciones de recuperaciÃ³n rÃ¡pida en un clic.
+## 2. Moléculas (Combinaciones funcionales de átomos)
+- **Campo de Formulario Validado:** Combinación de `<label>`, `<select>` o `<input>`, y `<p class="error" id="*-error">` vinculado mediante `aria-describedby`.
+- **Banner Contextual de Prerrequisitos (Tarjeta 11):** Contenedor con ícono de advertencia, descripción de la materia correlativa faltante y botón directo *"Seleccionar IHC (Habilitada)"*.
+- **Grupo de Acciones:** Barra horizontal con botón *"Regresar"*, *"Cancelar borrador"* y *"Continuar a revisión"*.
+- **Fila de Resumen:** Par clave-valor accesible (`<strong>Asignatura:</strong> <span>Interacción Humano-Computador</span>`).
+- **Alerta Accesible de Conflicto de Cupo (Tarjeta 12):** Notificación dinámica con `role="alert"` y `aria-live="assertive"` con opciones de recuperación rápida en un clic.
 
 ---
 
 ## 3. Organismos (Secciones funcionales completas)
-- **Stepper de Progreso:** Lista ordenada `<ol class="stepper">` con estados semÃ¡nticos (`active`, `completed`) para orientar la ubicaciÃ³n del usuario en el flujo de 4 pasos.
-- **Formulario de SelecciÃ³n AcadÃ©mica:** Organismo central que agrupa los campos de materia, paralelo con cupo en vivo, cÃ³digo de estudiante y validaciones en tiempo real.
-- **Panel de RevisiÃ³n Previa:** Organismo que consolida la informaciÃ³n seleccionada para que el estudiante valide antes de la persistencia final.
-- **Panel de Resultado y Comprobante:** Organismo que renderiza la confirmaciÃ³n oficial o el estado de conflicto de cupos con alternativas.
+- **Stepper de Progreso:** Lista ordenada `<ol class="stepper">` con estados semánticos (`active`, `completed`) para orientar la ubicación del usuario en el flujo de 4 pasos.
+- **Formulario de Selección Académica:** Organismo central que agrupa los campos de materia, paralelo con cupo en vivo, código de estudiante y validaciones en tiempo real.
+- **Panel de Revisión Previa:** Organismo que consolida la información seleccionada para que el estudiante valide antes de la persistencia final.
+- **Panel de Resultado y Comprobante:** Organismo que renderiza la confirmación oficial o el estado de conflicto de cupos con alternativas.
 
 ---
 
 ## 4. Plantillas (Layouts estructurales)
-- **Layout Shell Centrado:** Estructura con encabezado institucional UTA, saltador al contenido accesible (`.skip-link`), contenedor principal de 760px con contraste adecuado y pie de pÃ¡gina institucional.
+- **Layout Shell Centrado:** Estructura con encabezado institucional UTA, saltador al contenido accesible (`.skip-link`), contenedor principal de 760px con contraste adecuado y pie de página institucional.
 
 ---
 
-## 5. PÃ¡ginas / Vistas
-- **Vista 1 (Inicio):** Bienvenida, instrucciones de teclado y botÃ³n "Iniciar MatrÃ­cula".
-- **Vista 2 (SelecciÃ³n y Datos):** Formulario interactivo con detecciÃ³n de prerrequisitos y cupos.
-- **Vista 3 (RevisiÃ³n):** Resumen de selecciÃ³n antes de la confirmaciÃ³n formal.
+## 5. Páginas / Vistas
+- **Vista 1 (Inicio):** Bienvenida, instrucciones de teclado y botón "Iniciar Matrícula".
+- **Vista 2 (Selección y Datos):** Formulario interactivo con detección de prerrequisitos y cupos.
+- **Vista 3 (Revisión):** Resumen de selección antes de la confirmación formal.
 - **Vista 4 (Resultado):** Manejo de estados (Carga, Conflicto de Cupo / Error Recuperable, o Comprobante Exitoso).
 
 
 ---
 
-# Sitemap del Sistema de MatrÃ­cula Universitaria
+# Sitemap del Sistema de Matrícula Universitaria
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
 ---
 
-## ðŸ—ºï¸ Mapa del Sitio (Sitemap)
+## 🗺️ Mapa del Sitio (Sitemap)
 
 ```mermaid
 graph TD
-    A["Inicio (SGA MatrÃ­cula)"] --> B["SelecciÃ³n de Asignaturas y Datos"]
-    B --> C{"ValidaciÃ³n de Prerrequisitos (T11)"}
+    A["Inicio (SGA Matrícula)"] --> B["Selección de Asignaturas y Datos"]
+    B --> C{"Validación de Prerrequisitos (T11)"}
     C -- "Pendiente" --> D["Aviso de Prerrequisito y Oferta de Materia Habilitada"]
     D --> B
-    C -- "Aprobado" --> E["Completar Paralelo y CÃ³digo"]
-    E --> F["RevisiÃ³n Previa de la MatrÃ­cula"]
+    C -- "Aprobado" --> E["Completar Paralelo y Código"]
+    E --> F["Revisión Previa de la Matrícula"]
     F --> G{"Procesamiento y Concurrencia de Cupo"}
-    G -- "Conflicto de Cupo (R7 / T12)" --> H["ResoluciÃ³n de Conflicto (Paralelo B / Lista de Espera)"]
+    G -- "Conflicto de Cupo (R7 / T12)" --> H["Resolución de Conflicto (Paralelo B / Lista de Espera)"]
     H --> F
     G -- "Cupo Confirmado" --> I["Resultado Exitoso y Comprobante Oficial"]
 ```
 
-### DescripciÃ³n de Niveles:
-1. **Nivel 1 â€” Entrada:** Vista de bienvenida, instrucciones de accesibilidad por teclado y botÃ³n de inicio.
-2. **Nivel 2 â€” Formulario:** Entrada de datos, selecciÃ³n de asignatura, detecciÃ³n automÃ¡tica de correlativas y selecciÃ³n de paralelo con cupos visibles.
-3. **Nivel 3 â€” RevisiÃ³n:** Resumen completo previo a la escritura en base de datos para prevenir envÃ­os accidentales.
-4. **Nivel 4 â€” Excepciones y RecuperaciÃ³n:** GestiÃ³n de conflicto de concurrencia y reasignaciÃ³n de cupos sin pÃ©rdida de datos.
-5. **Nivel 5 â€” Cierre Transaccional:** GeneraciÃ³n y descarga del comprobante formal con cÃ³digo `MAT-UTA-XXXXXX`.
+### Descripción de Niveles:
+1. **Nivel 1 — Entrada:** Vista de bienvenida, instrucciones de accesibilidad por teclado y botón de inicio.
+2. **Nivel 2 — Formulario:** Entrada de datos, selección de asignatura, detección automática de correlativas y selección de paralelo con cupos visibles.
+3. **Nivel 3 — Revisión:** Resumen completo previo a la escritura en base de datos para prevenir envíos accidentales.
+4. **Nivel 4 — Excepciones y Recuperación:** Gestión de conflicto de concurrencia y reasignación de cupos sin pérdida de datos.
+5. **Nivel 5 — Cierre Transaccional:** Generación y descarga del comprobante formal con código `MAT-UTA-XXXXXX`.
 
 
 ---
 
-# Diagrama de NavegaciÃ³n y Flujo de Usuario (User Flow)
+# Diagrama de Navegación y Flujo de Usuario (User Flow)
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
 ---
 
-## ðŸ”€ Diagrama de Flujo Completo con Ramas de ExcepciÃ³n (Mermaid)
+## 🔀 Diagrama de Flujo Completo con Ramas de Excepción (Mermaid)
 
 ```mermaid
 flowchart TD
-    Inicio["1. Inicio: Portal de MatrÃ­cula"] -->|"Comenzar [Enter/Clic]"| Form["2. Formulario de SelecciÃ³n"]
+    Inicio["1. Inicio: Portal de Matrícula"] -->|"Comenzar [Enter/Clic]"| Form["2. Formulario de Selección"]
     
-    Form -->|"Selecciona Asignatura"| CheckPre{"Â¿Prerrequisito pendiente? (T11)"}
-    CheckPre -- "SÃ­" --> BannerPre["Alerta contextual: Prerrequisito no cumplido\n+ BotÃ³n: Seleccionar materia alternativa"]
+    Form -->|"Selecciona Asignatura"| CheckPre{"¿Prerrequisito pendiente? (T11)"}
+    CheckPre -- "Sí" --> BannerPre["Alerta contextual: Prerrequisito no cumplido\n+ Botón: Seleccionar materia alternativa"]
     BannerPre -->|"Elegir alternativa"| Form
-    CheckPre -- "No" --> InputData["Ingresar Paralelo y CÃ³digo de Estudiante"]
+    CheckPre -- "No" --> InputData["Ingresar Paralelo y Código de Estudiante"]
     
-    InputData -->|"Cancelar"| ModalCancel{"Â¿Seguro de cancelar?"}
-    ModalCancel -- "Confirmar cancelaciÃ³n" --> Inicio
+    InputData -->|"Cancelar"| ModalCancel{"¿Seguro de cancelar?"}
+    ModalCancel -- "Confirmar cancelación" --> Inicio
     ModalCancel -- "Deshacer / Regresar" --> Form
     
-    InputData -->|"ValidaciÃ³n local"| ValCheck{"Â¿Campos vÃ¡lidos?"}
-    ValCheck -- "No" --> FormError["Mostrar error junto al campo\nFocus programÃ¡tico al primer error"]
+    InputData -->|"Validación local"| ValCheck{"¿Campos válidos?"}
+    ValCheck -- "No" --> FormError["Mostrar error junto al campo\nFocus programático al primer error"]
     FormError --> Form
-    ValCheck -- "SÃ­" --> Review["3. Pantalla de RevisiÃ³n Previa"]
+    ValCheck -- "Sí" --> Review["3. Pantalla de Revisión Previa"]
     
     Review -->|"Modificar datos"| Form
-    Review -->|"Confirmar MatrÃ­cula"| Loading["Estado de Procesamiento (Spinner + disabled)"]
+    Review -->|"Confirmar Matrícula"| Loading["Estado de Procesamiento (Spinner + disabled)"]
     
-    Loading --> CheckSlot{"Â¿Cupo disponible simultÃ¡neamente? (R7 / T12)"}
+    Loading --> CheckSlot{"¿Cupo disponible simultáneamente? (R7 / T12)"}
     
     CheckSlot -- "No: Cupo tomado por otro" --> ConflictState["Estado de Conflicto de Cupo\n- Conserva datos en localStorage\n- Anuncio por lector: aria-live='assertive'\n- Ofrece: Cambiar a Paralelo B o Lista de espera"]
     ConflictState -->|"Cambiar a Paralelo B"| Review
     
-    CheckSlot -- "SÃ­: Cupo asegurado" --> Success["4. Comprobante Oficial Generado\n- CÃ³digo Ãºnico MAT-UTA-XXXXXX\n- Limpieza segura de borrador\n- Feedback accesible aria-live='polite'"]
+    CheckSlot -- "Sí: Cupo asegurado" --> Success["4. Comprobante Oficial Generado\n- Código único MAT-UTA-XXXXXX\n- Limpieza segura de borrador\n- Feedback accesible aria-live='polite'"]
     
-    Success -->|"Finalizar / Nueva matrÃ­cula"| Inicio
+    Success -->|"Finalizar / Nueva matrícula"| Inicio
 ```
 
-### Reglas de NavegaciÃ³n por Teclado:
-- `Tab` / `Shift + Tab`: Desplazamiento secuencial a travÃ©s del Ã¡rbol DOM interactivo.
-- `Enter` / `Espacio`: EjecuciÃ³n de la acciÃ³n seleccionada.
-- `Escape`: Cierre de diÃ¡logos de advertencia o foco al botÃ³n de cancelaciÃ³n cuando se encuentra en el formulario.
+### Reglas de Navegación por Teclado:
+- `Tab` / `Shift + Tab`: Desplazamiento secuencial a través del árbol DOM interactivo.
+- `Enter` / `Espacio`: Ejecución de la acción seleccionada.
+- `Escape`: Cierre de diálogos de advertencia o foco al botón de cancelación cuando se encuentra en el formulario.
 
 
 ---
 
-# Wireframes Lo-Fi del Sistema de MatrÃ­cula Universitaria
+# Wireframes Lo-Fi del Sistema de Matrícula Universitaria
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
-A continuaciÃ³n se presentan los cuatro wireframes de baja fidelidad (Lo-Fi) que modelan la estructura visual, la jerarquÃ­a de contenidos y los estados de error y recuperaciÃ³n.
+A continuación se presentan los cuatro wireframes de baja fidelidad (Lo-Fi) que modelan la estructura visual, la jerarquía de contenidos y los estados de error y recuperación.
 
 ---
 
-## ðŸ“ WF-01: Pantalla de Inicio (Acceso y Bienvenida)
+## 📐 WF-01: Pantalla de Inicio (Acceso y Bienvenida)
 
 ```text
 +-----------------------------------------------------------------------+
-| [Logo UTA]  SISTEMA DE MATRÃCULA UNIVERSITARIA (SGA)     [Usuario]   |
+| [Logo UTA]  SISTEMA DE MATRÍCULA UNIVERSITARIA (SGA)     [Usuario]   |
 +-----------------------------------------------------------------------+
 |                                                                       |
-|   MATRÃCULA ORDINARIA â€” PERÃODO ACADÃ‰MICO 2026-B                      |
+|   MATRÍCULA ORDINARIA — PERÍODO ACADÉMICO 2026-B                      |
 |                                                                       |
-|   Bienvenido/a al portal de inscripciÃ³n de asignaturas de la FISEI.   |
+|   Bienvenido/a al portal de inscripción de asignaturas de la FISEI.   |
 |                                                                       |
 |   [ ! ] Modo accesible activo: Puede navegar este sistema usando      |
 |         exclusivamente el teclado (Tab, Enter, Escape).               |
 |                                                                       |
-|   Tus selecciones se guardarÃ¡n automÃ¡ticamente en tu borrador.       |
+|   Tus selecciones se guardarán automáticamente en tu borrador.       |
 |                                                                       |
-|                    [ Iniciar Proceso de MatrÃ­cula ]                   |
+|                    [ Iniciar Proceso de Matrícula ]                   |
 |                                                                       |
 +-----------------------------------------------------------------------+
-| Universidad TÃ©cnica de Ambato Â· FISEI Â· Carrera de Software           |
+| Universidad Técnica de Ambato · FISEI · Carrera de Software           |
 +-----------------------------------------------------------------------+
 ```
 
 ---
 
-## ðŸ“ WF-02: Formulario de SelecciÃ³n con DetecciÃ³n de Prerrequisitos (Tarjeta 11)
+## 📐 WF-02: Formulario de Selección con Detección de Prerrequisitos (Tarjeta 11)
 
 ```text
 +-----------------------------------------------------------------------+
-| [1. Inicio] =====> [ 2. SelecciÃ³n de Materia ] ----> [ 3. RevisiÃ³n ]  |
+| [1. Inicio] =====> [ 2. Selección de Materia ] ----> [ 3. Revisión ]  |
 +-----------------------------------------------------------------------+
 |                                                                       |
-|   Paso 2: SelecciÃ³n AcadÃ©mica y Datos del Estudiante                  |
+|   Paso 2: Selección Académica y Datos del Estudiante                  |
 |                                                                       |
 |   Asignatura a Matricular:                                            |
 |   [ Sistemas Distribuidos                             | v ]           |
 |                                                                       |
 |   +---------------------------------------------------------------+   |
-|   | /!\ RESTRICCIÃ“N DE PRERREQUISITO DETECTADA:                   |   |
-|   | Esta materia requiere "Redes de ComunicaciÃ³n" aprobada.       |   |
+|   | /!\ RESTRICCIÓN DE PRERREQUISITO DETECTADA:                   |   |
+|   | Esta materia requiere "Redes de Comunicación" aprobada.       |   |
 |   | Sugerencia: Puedes matricularte en la materia habilitada:     |   |
-|   |       [ >>> Seleccionar InteracciÃ³n Humano-Computador <<< ]   |   |
+|   |       [ >>> Seleccionar Interacción Humano-Computador <<< ]   |   |
 |   +---------------------------------------------------------------+   |
 |                                                                       |
 |   Paralelo Disponible:                                                |
 |   [ Paralelo A (1 cupo restante)                      | v ]           |
 |                                                                       |
-|   CÃ³digo de Estudiante UTA:                                           |
+|   Código de Estudiante UTA:                                           |
 |   [ 2026-UTA-0412                                         ]           |
 |                                                                       |
 |   [ Regresar ]            [ Cancelar Borrador ]           [ Continuar ]|
@@ -417,53 +419,53 @@ A continuaciÃ³n se presentan los cuatro wireframes de baja fidelidad (Lo-Fi) q
 
 ---
 
-## ðŸ“ WF-03: GestiÃ³n de Conflicto de Cupo Concurrente (R7 / Tarjeta 12)
+## 📐 WF-03: Gestión de Conflicto de Cupo Concurrente (R7 / Tarjeta 12)
 
 ```text
 +-----------------------------------------------------------------------+
-| [1. Inicio] ======> [ 2. SelecciÃ³n ] =======> [ 3. RevisiÃ³n y Estado ]|
+| [1. Inicio] ======> [ 2. Selección ] =======> [ 3. Revisión y Estado ]|
 +-----------------------------------------------------------------------+
 |                                                                       |
 |   +---------------------------------------------------------------+   |
 |   | [X] ALERTA DE CONCURRENCIA: CUPO NO DISPONIBLE EN PARALELO A  |   |
 |   |                                                               |   |
-|   | El Ãºltimo cupo del Paralelo A fue confirmado por otro         |   |
+|   | El último cupo del Paralelo A fue confirmado por otro         |   |
 |   | estudiante hace un instante.                                  |   |
 |   |                                                               |   |
-|   | Â¡TUS DATOS Y ASIGNATURA SIGUEN GUARDADOS EN EL BORRADOR!      |   |
+|   | ¡TUS DATOS Y ASIGNATURA SIGUEN GUARDADOS EN EL BORRADOR!      |   |
 |   |                                                               |   |
-|   | Â¿CÃ³mo deseas continuar?                                       |   |
-|   |   [ OpciÃ³n 1: Matricular en Paralelo B (3 cupos libres) ]    |   |
-|   |   [ OpciÃ³n 2: Registrarme en Lista de Espera con alerta ]    |   |
+|   | ¿Cómo deseas continuar?                                       |   |
+|   |   [ Opción 1: Matricular en Paralelo B (3 cupos libres) ]    |   |
+|   |   [ Opción 2: Registrarme en Lista de Espera con alerta ]    |   |
 |   +---------------------------------------------------------------+   |
 |                                                                       |
-|   [ Modificar SelecciÃ³n ]                        [ Reintentar EnvÃ­o ] |
+|   [ Modificar Selección ]                        [ Reintentar Envío ] |
 +-----------------------------------------------------------------------+
 ```
 
 ---
 
-## ðŸ“ WF-04: ConfirmaciÃ³n y Comprobante Oficial Accesible
+## 📐 WF-04: Confirmación y Comprobante Oficial Accesible
 
 ```text
 +-----------------------------------------------------------------------+
-| [1. Inicio] ======> [ 2. SelecciÃ³n ] =======> [ 3. MatrÃ­cula Exitosa ]|
+| [1. Inicio] ======> [ 2. Selección ] =======> [ 3. Matrícula Exitosa ]|
 +-----------------------------------------------------------------------+
 |                                                                       |
-|   Â¡MATRÃCULA CONFIRMADA EXITOSAMENTE!                                 |
+|   ¡MATRÍCULA CONFIRMADA EXITOSAMENTE!                                 |
 |                                                                       |
 |   +---------------------------------------------------------------+   |
-|   | RESUMEN DE LA MATRÃCULA:                                      |   |
-|   | Â· Estudiante:   CÃ³digo 2026-UTA-0412                          |   |
-|   | Â· Asignatura:   InteracciÃ³n Humano-Computador                 |   |
-|   | Â· Paralelo:     Paralelo B (Aula 204 - Laboratorio)           |   |
-|   | Â· PerÃ­odo:      2026-B                                        |   |
-|   | Â· CÃ“DIGO HASH:  MAT-UTA-982145                                |   |
-|   | Â· Estado:       ACTIVA Y ASENTADA EN SISTEMA SGA              |   |
+|   | RESUMEN DE LA MATRÍCULA:                                      |   |
+|   | · Estudiante:   Código 2026-UTA-0412                          |   |
+|   | · Asignatura:   Interacción Humano-Computador                 |   |
+|   | · Paralelo:     Paralelo B (Aula 204 - Laboratorio)           |   |
+|   | · Período:      2026-B                                        |   |
+|   | · CÓDIGO HASH:  MAT-UTA-982145                                |   |
+|   | · Estado:       ACTIVA Y ASENTADA EN SISTEMA SGA              |   |
 |   +---------------------------------------------------------------+   |
 |                                                                       |
 |          [ Imprimir / Descargar Comprobante Oficial ]                 |
-|          [ Realizar Nueva MatrÃ­cula ]                                 |
+|          [ Realizar Nueva Matrícula ]                                 |
 |                                                                       |
 +-----------------------------------------------------------------------+
 ```
@@ -471,210 +473,208 @@ A continuaciÃ³n se presentan los cuatro wireframes de baja fidelidad (Lo-Fi) q
 
 ---
 
-# Decisiones de DiseÃ±o, Fidelidad y Comparativa v1 â†’ v2
+# Decisiones de Diseño, Fidelidad y Comparativa v1 → v2
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
 ---
 
-## 1. JustificaciÃ³n de la TÃ©cnica de Prototipado y Fidelidad
+## 1. Justificación de la Técnica de Prototipado y Fidelidad
 
-Para el caso de **MatrÃ­cula Universitaria**, se seleccionÃ³ **prototipado en cÃ³digo web nativo (HTML5, CSS3 y JavaScript semÃ¡ntico)** frente a prototipos en papel, storyboards o herramientas clic-a-clic como Figma por las siguientes razones de ingenierÃ­a:
+Para el caso de **Matrícula Universitaria**, se seleccionó **prototipado en código web nativo (HTML5, CSS3 y JavaScript semántico)** frente a prototipos en papel, storyboards o herramientas clic-a-clic como Figma por las siguientes razones de ingeniería:
 
-1. **EvaluaciÃ³n de Accesibilidad Real (WCAG 2.1 AA):** Una maqueta estÃ¡tica o basada en imÃ¡genes no permite evaluar lectores de pantalla reales (NVDA, JAWS, VoiceOver), ni regiones vivas (`aria-live`), ni el orden estricto de tabulaciÃ³n y control de foco (`tabindex`, `focus()`).
-2. **SimulaciÃ³n de Concurrencia y Conflicto en Tiempo Real (Incidencia R7):** El caso de la Tarjeta 12 exige simular que dos estudiantes compiten por el mismo cupo. El cÃ³digo JavaScript permite disparar estados asÃ­ncronos (`setTimeout`), manipulaciÃ³n del DOM y persistencia en `localStorage` sin requerir infraestructura de servidor.
+1. **Evaluación de Accesibilidad Real (WCAG 2.1 AA):** Una maqueta estática o basada en imágenes no permite evaluar lectores de pantalla reales (NVDA, JAWS, VoiceOver), ni regiones vivas (`aria-live`), ni el orden estricto de tabulación y control de foco (`tabindex`, `focus()`).
+2. **Simulación de Concurrencia y Conflicto en Tiempo Real (Incidencia R7):** El caso de la Tarjeta 12 exige simular que dos estudiantes compiten por el mismo cupo. El código JavaScript permite disparar estados asíncronos (`setTimeout`), manipulación del DOM y persistencia en `localStorage` sin requerir infraestructura de servidor.
 3. **Fidelidad y Profundidad:**
-   - **Fidelidad Visual:** Media-Alta (paleta institucional UTA, tipografÃ­a legible con contraste superior a 4.5:1, espaciado de 8pt grid).
-   - **Profundidad Funcional:** Media (cubre de extremo a extremo la tarea crÃ­tica de selecciÃ³n, detecciÃ³n de prerrequisitos, revisiÃ³n previa, simulaciÃ³n de conflicto y emisiÃ³n de comprobante persistente).
+   - **Fidelidad Visual:** Media-Alta (paleta institucional UTA, tipografía legible con contraste superior a 4.5:1, espaciado de 8pt grid).
+   - **Profundidad Funcional:** Media (cubre de extremo a extremo la tarea crítica de selección, detección de prerrequisitos, revisión previa, simulación de conflicto y emisión de comprobante persistente).
 
 ---
 
-## 2. Matriz Comparativa de EvoluciÃ³n: VersiÃ³n Inicial (v1) vs VersiÃ³n Accesible (v2)
+## 2. Matriz Comparativa de Evolución: Versión Inicial (v1) vs Versión Accesible (v2)
 
-| DimensiÃ³n de UX / IHC | VersiÃ³n 1 (v1) â€” Prototipo Inicial con Fallos | VersiÃ³n 2 (v2) â€” Prototipo Mejorado con Incidencias | JustificaciÃ³n e Impacto en la Experiencia |
+| Dimensión de UX / IHC | Versión 1 (v1) — Prototipo Inicial con Fallos | Versión 2 (v2) — Prototipo Mejorado con Incidencias | Justificación e Impacto en la Experiencia |
 | :--- | :--- | :--- | :--- |
-| **Arquitectura de Flujo** | Formulario Ãºnico directo y plano sin pasos visibles. | Stepper numerado (`Inicio` â†’ `SelecciÃ³n` â†’ `RevisiÃ³n` â†’ `Resultado`). | Reduce la carga cognitiva y permite al estudiante conocer su avance en la transacciÃ³n. |
-| **Manejo de Prerrequisitos (Tarjeta 11)** | El botÃ³n "Confirmar" parecÃ­a disponible; fallaba al final sin explicar quÃ© faltaba. | DetecciÃ³n contextual inmediata al seleccionar la materia; banner no bloqueante con sugerencia de alternativa habilitada (*IHC*). | Cumple con la heurÃ­stica H5 (PrevenciÃ³n de errores) y H3 (Control y libertad del usuario). |
-| **Manejo de Cupos Concurrentes (Tarjeta 12 / R7)** | Fallo genÃ©rico que borraba el formulario completo y obligaba a reiniciar la matrÃ­cula. | SimulaciÃ³n de conflicto que **conserva los datos en borrador**, explica el motivo sin culpar al usuario y ofrece cambio rÃ¡pido a Paralelo B o Lista de Espera. | Evita el momento de verdad crÃ­tico (-2 en la curva emocional) y sostiene la confianza institucional. |
-| **Accesibilidad por Teclado** | Foco nativo del navegador poco visible (halo azul tenue estÃ¡ndar de 1px). | Indicador de foco visible de alto contraste (`outline: 3px solid #0056b3; outline-offset: 2px`) y salto al contenido (`.skip-link`). | Cumple criterio de conformidad WCAG 2.4.7 (Focus Visible). |
-| **Soporte de Lector de Pantalla** | Notificaciones visuales sin soporte auditivo; los errores no se leÃ­an. | Atributos `aria-describedby` en inputs y `aria-live="assertive"` en mensajes de conflicto y carga. | Garantiza inclusiÃ³n para personas con discapacidad visual o uso exclusivo de lector. |
-| **Persistencia de Datos** | La recarga o error accidental reseteaba todos los campos. | Almacenamiento local persistente (`localStorage`) que restaura la selecciÃ³n tras cualquier fallo. | Cumple con la heurÃ­stica H9 (RecuperaciÃ³n ante errores). |
+| **Arquitectura de Flujo** | Formulario único directo y plano sin pasos visibles. | Stepper numerado (`Inicio` → `Selección` → `Revisión` → `Resultado`). | Reduce la carga cognitiva y permite al estudiante conocer su avance en la transacción. |
+| **Manejo de Prerrequisitos (Tarjeta 11)** | El botón "Confirmar" parecía disponible; fallaba al final sin explicar qué faltaba. | Detección contextual inmediata al seleccionar la materia; banner no bloqueante con sugerencia de alternativa habilitada (*IHC*). | Cumple con la heurística H5 (Prevención de errores) y H3 (Control y libertad del usuario). |
+| **Manejo de Cupos Concurrentes (Tarjeta 12 / R7)** | Fallo genérico que borraba el formulario completo y obligaba a reiniciar la matrícula. | Simulación de conflicto que **conserva los datos en borrador**, explica el motivo sin culpar al usuario y ofrece cambio rápido a Paralelo B o Lista de Espera. | Evita el momento de verdad crítico (-2 en la curva emocional) y sostiene la confianza institucional. |
+| **Accesibilidad por Teclado** | Foco nativo del navegador poco visible (halo azul tenue estándar de 1px). | Indicador de foco visible de alto contraste (`outline: 3px solid #0056b3; outline-offset: 2px`) y salto al contenido (`.skip-link`). | Cumple criterio de conformidad WCAG 2.4.7 (Focus Visible). |
+| **Soporte de Lector de Pantalla** | Notificaciones visuales sin soporte auditivo; los errores no se leían. | Atributos `aria-describedby` en inputs y `aria-live="assertive"` en mensajes de conflicto y carga. | Garantiza inclusión para personas con discapacidad visual o uso exclusivo de lector. |
+| **Persistencia de Datos** | La recarga o error accidental reseteaba todos los campos. | Almacenamiento local persistente (`localStorage`) que restaura la selección tras cualquier fallo. | Cumple con la heurística H9 (Recuperación ante errores). |
 
 
 ---
 
-# Registro de SesiÃ³n de Pruebas de Usabilidad (UX Testing)
+# Registro de Sesión de Pruebas de Usabilidad (UX Testing)
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema Evaluado:** MatrÃ­cula Universitaria (SGA UTA)  
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema Evaluado:** Matrícula Universitaria (SGA UTA)  
 **Equipo Evaluador:** Grupo 4  
-**Protocolo:** Prueba de observaciÃ³n y pensamiento en voz alta (Think Aloud) no dirigida.  
+**Protocolo:** Prueba de observación y pensamiento en voz alta (Think Aloud) no dirigida.  
 
 ---
 
-## ðŸ“‹ Ficha TÃ©cnica de la SesiÃ³n
+## 📋 Ficha Técnica de la Sesión
 
-- **Fecha y Hora de la SesiÃ³n:** 29 de octubre de 2026, 09:15 AM
-- **CÃ³digo del Participante:** `P-04-G2` (Estudiante de 5to nivel perteneciente al Grupo 2 - Pagos AcadÃ©micos)
-- **VersiÃ³n Evaluada:** Comparativa directa v1 (inicial con fallos) vs v2 (refinada con accesibilidad)
-- **Objetivo de la Prueba:** Evaluar la autonomÃ­a, manejo de errores, respuesta ante conflicto de cupo y operabilidad por teclado durante la inscripciÃ³n de una asignatura.
+- **Fecha y Hora de la Sesión:** 29 de octubre de 2026, 09:15 AM
+- **Código del Participante:** `P-04-G2` (Estudiante de 5to nivel perteneciente al Grupo 2 - Pagos Académicos)
+- **Versión Evaluada:** Comparativa directa v1 (inicial con fallos) vs v2 (refinada con accesibilidad)
+- **Objetivo de la Prueba:** Evaluar la autonomía, manejo de errores, respuesta ante conflicto de cupo y operabilidad por teclado durante la inscripción de una asignatura.
 - **Tarea Asignada al Participante:**  
-  *"Ingresa al portal, selecciona una asignatura y paralelo disponible, completa tus datos de estudiante y confirma la matrÃ­cula sin utilizar el ratÃ³n (solo teclado)."*
+  *"Ingresa al portal, selecciona una asignatura y paralelo disponible, completa tus datos de estudiante y confirma la matrícula sin utilizar el ratón (solo teclado)."*
 
 ---
 
-## â±ï¸ MÃ©tricas de Rendimiento Observadas
+## ⏱️ Métricas de Rendimiento Observadas
 
-| MÃ©trica de Usabilidad | VersiÃ³n 1 (v1) | VersiÃ³n 2 (v2) | VariaciÃ³n y Mejora |
+| Métrica de Usabilidad | Versión 1 (v1) | Versión 2 (v2) | Variación y Mejora |
 | :--- | :---: | :---: | :---: |
-| **Tiempo de FinalizaciÃ³n de Tarea (TCT)** | 145 segundos | 48 segundos | **-66.8% de tiempo** (Alta eficiencia) |
-| **Tasa de Ã‰xito de la Tarea** | Ã‰xito Parcial (RequiriÃ³ 2 intentos) | Ã‰xito Total (1er intento guiado) | **100% efectividad** |
-| **NÃºmero de Errores CrÃ­ticos** | 3 errores | 0 errores | **-100% de errores** |
+| **Tiempo de Finalización de Tarea (TCT)** | 145 segundos | 48 segundos | **-66.8% de tiempo** (Alta eficiencia) |
+| **Tasa de Éxito de la Tarea** | Éxito Parcial (Requirió 2 intentos) | Éxito Total (1er intento guiado) | **100% efectividad** |
+| **Número de Errores Críticos** | 3 errores | 0 errores | **-100% de errores** |
 | **Pausas / Dudas Observadas** | 4 pausas prolongadas (>8 seg) | 1 pausa breve (lectura de resumen) | Fluidez sostenida |
-| **PuntuaciÃ³n de Usabilidad Percibida (SUS est.)** | 42.5 / 100 (Pobre) | 87.5 / 100 (Excelente) | +45 puntos de satisfacciÃ³n |
+| **Puntuación de Usabilidad Percibida (SUS est.)** | 42.5 / 100 (Pobre) | 87.5 / 100 (Excelente) | +45 puntos de satisfacción |
 
 ---
 
-## ðŸ” Registro Detallado de Observaciones y Comportamiento
+## 🔍 Registro Detallado de Observaciones y Comportamiento
 
-### 1. Dificultades Detectadas en la VersiÃ³n 1 (v1):
-- **ConfusiÃ³n de prerrequisitos:** El participante seleccionÃ³ *Sistemas Distribuidos*; al dar clic en confirmar, la pantalla simplemente arrojÃ³ un aviso genÃ©rico de error y borrÃ³ todo el formulario.
-- **Incertidumbre de foco de teclado:** Al usar `Tab`, el participante perdiÃ³ de vista dÃ³nde estaba posicionado porque el foco del navegador era invisible sobre el fondo blanco.
-- **PÃ©rdida de datos tras conflicto:** Al simularse el fallo de cupo, el usuario exclamÃ³ frustrado al ver los campos en blanco:
-  > *"Â¡No puede ser! Me saliÃ³ error de cupo y se me borrÃ³ todo lo que ya habÃ­a escrito. Ahora tengo que empezar desde el inicio."* (Cita textual de `P-04-G2`).
+### 1. Dificultades Detectadas en la Versión 1 (v1):
+- **Confusión de prerrequisitos:** El participante seleccionó *Sistemas Distribuidos*; al dar clic en confirmar, la pantalla simplemente arrojó un aviso genérico de error y borró todo el formulario.
+- **Incertidumbre de foco de teclado:** Al usar `Tab`, el participante perdió de vista dónde estaba posicionado porque el foco del navegador era invisible sobre el fondo blanco.
+- **Pérdida de datos tras conflicto:** Al simularse el fallo de cupo, el usuario exclamó frustrado al ver los campos en blanco:
+  > *"¡No puede ser! Me salió error de cupo y se me borró todo lo que ya había escrito. Ahora tengo que empezar desde el inicio."* (Cita textual de `P-04-G2`).
 
-### 2. Comportamiento Observado en la VersiÃ³n 2 (v2):
-- **DetecciÃ³n inmediata de prerrequisito (Tarjeta 11):** Al elegir *Sistemas Distribuidos*, leyÃ³ el banner contextual y pulsÃ³ inmediatamente el botÃ³n alternativo sugerido (*"Matricular en IHC"*), sin frustraciÃ³n.
-- **RecuperaciÃ³n ante conflicto de concurrencia (Tarjeta 12 / R7):** Cuando el sistema simulÃ³ la pÃ©rdida del cupo en Paralelo A, el participante escuchÃ³ el anuncio de la regiÃ³n viva y leyÃ³ el mensaje. PulsÃ³ el botÃ³n *"Cambiar a Paralelo B disponible"*; constatÃ³ que su cÃ³digo de estudiante seguÃ­a escrito y finalizÃ³ en 5 segundos.
-  > *"QuÃ© alivio que no me borrÃ³ los datos y me ofreciÃ³ de una vez el paralelo B que sÃ­ tenÃ­a cupos."* (Cita textual de `P-04-G2`).
-
----
-
-## ðŸ› ï¸ RecomendaciÃ³n Priorizada y Cambio Aplicado
-
-1. **Hallazgo Prioritario:** El usuario necesita que el foco del teclado viaje automÃ¡ticamente a las alertas de error y a las opciones de recuperaciÃ³n cuando ocurre un conflicto imprevisto.
-2. **Cambio Aplicado en CÃ³digo (v2):** En `prototipo/v2/app.js`, se implementÃ³ `box.focus()` y `aria-live="assertive"` para que las tecnologÃ­as de asistencia y los usuarios por teclado tengan acceso directo a los botones de resoluciÃ³n de conflicto sin necesidad de presionar 8 veces `Tab`.
+### 2. Comportamiento Observado en la Versión 2 (v2):
+- **Detección inmediata de prerrequisito (Tarjeta 11):** Al elegir *Sistemas Distribuidos*, leyó el banner contextual y pulsó inmediatamente el botón alternativo sugerido (*"Matricular en IHC"*), sin frustración.
+- **Recuperación ante conflicto de concurrencia (Tarjeta 12 / R7):** Cuando el sistema simuló la pérdida del cupo en Paralelo A, el participante escuchó el anuncio de la región viva y leyó el mensaje. Pulsó el botón *"Cambiar a Paralelo B disponible"*; constató que su código de estudiante seguía escrito y finalizó en 5 segundos.
+  > *"Qué alivio que no me borró los datos y me ofreció de una vez el paralelo B que sí tenía cupos."* (Cita textual de `P-04-G2`).
 
 ---
 
-## ðŸ“ˆ Comparativa de la Curva Emocional (Antes vs DespuÃ©s)
+## 🛠️ Recomendación Priorizada y Cambio Aplicado
 
-| # | Touchpoint de la Tarea | Curva v1 (Antes) | Curva v2 (DespuÃ©s) | JustificaciÃ³n de la VariaciÃ³n |
+1. **Hallazgo Prioritario:** El usuario necesita que el foco del teclado viaje automáticamente a las alertas de error y a las opciones de recuperación cuando ocurre un conflicto imprevisto.
+2. **Cambio Aplicado en Código (v2):** En `prototipo/v2/app.js`, se implementó `box.focus()` y `aria-live="assertive"` para que las tecnologías de asistencia y los usuarios por teclado tengan acceso directo a los botones de resolución de conflicto sin necesidad de presionar 8 veces `Tab`.
+
+---
+
+## 📈 Comparativa de la Curva Emocional (Antes vs Después)
+
+| # | Touchpoint de la Tarea | Curva v1 (Antes) | Curva v2 (Después) | Justificación de la Variación |
 | :-: | :--- | :-: | :-: | :--- |
-| 1 | Acceso e inicio de matrÃ­cula | 0 | +1 | El stepper y la ayuda de teclado transmiten claridad inmediata. |
-| 2 | SelecciÃ³n de asignatura | 0 | +1 | CatÃ¡logo limpio y badges legibles. |
-| 3 | Manejo de prerrequisitos (Momento de Verdad 1) | **-2** | **+1** | Se reemplazÃ³ el fallo bloqueante por advertencia y alternativa vÃ¡lida directa. |
-| 4 | SelecciÃ³n de paralelo y cupo | 0 | +1 | Disponibilidad clara de cupos en tiempo real. |
+| 1 | Acceso e inicio de matrícula | 0 | +1 | El stepper y la ayuda de teclado transmiten claridad inmediata. |
+| 2 | Selección de asignatura | 0 | +1 | Catálogo limpio y badges legibles. |
+| 3 | Manejo de prerrequisitos (Momento de Verdad 1) | **-2** | **+1** | Se reemplazó el fallo bloqueante por advertencia y alternativa válida directa. |
+| 4 | Selección de paralelo y cupo | 0 | +1 | Disponibilidad clara de cupos en tiempo real. |
 | 5 | Ingreso de datos del estudiante | +1 | +1 | Persistencia garantizada en segundo plano. |
-| 6 | RevisiÃ³n previa | +1 | +2 | Resumen detallado que reduce la ansiedad pre-confirmaciÃ³n. |
-| 7 | Conflicto de cupo al confirmar (Momento de Verdad 2) | **-2** | **+1** | **El momento mÃ¡s crÃ­tico se convirtiÃ³ en recuperaciÃ³n asistida:** los datos se salvan y se ofrece Paralelo B. |
-| 8 | Comprobante oficial emitido | +2 | +2 | EmisiÃ³n de comprobante con cÃ³digo hash de respaldo. |
+| 6 | Revisión previa | +1 | +2 | Resumen detallado que reduce la ansiedad pre-confirmación. |
+| 7 | Conflicto de cupo al confirmar (Momento de Verdad 2) | **-2** | **+1** | **El momento más crítico se convirtió en recuperación asistida:** los datos se salvan y se ofrece Paralelo B. |
+| 8 | Comprobante oficial emitido | +2 | +2 | Emisión de comprobante con código hash de respaldo. |
 
 
 ---
 
-# Evidencias de Usabilidad y Pruebas EmpÃ­ricas
+# Evidencias de Usabilidad y Pruebas Empíricas
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC)  
-**Sistema:** MatrÃ­cula Universitaria (SGA UTA)  
-**Equipo:** Grupo 4 â€” Variante F (MatrÃ­cula)  
-
----
-
-## ðŸ“ Archivos de Evidencia Generados
-
-1. **[curva-emocional-comparativa.svg](curva-emocional-comparativa.svg):** Diagrama vectorial cuantitativo que compara la curva de emociÃ³n observada en la versiÃ³n inicial (v1) con valles crÃ­ticos de `-2` frente a la versiÃ³n refinada (v2) que mantiene la estabilidad emocional en `+1` y `+2`.
-2. **Registro de SesiÃ³n UX:** Documentado en [`../pruebas/sesion.md`](../pruebas/sesion.md) con participante anÃ³nimo `P-04-G2` (Grupo 2 - Pagos).
-3. **MÃ©tricas de Rendimiento:**
-   - ReducciÃ³n del tiempo de tarea: de 145 segundos a 48 segundos.
-   - ReducciÃ³n de errores crÃ­ticos de 3 a 0.
-   - EliminaciÃ³n de la pÃ©rdida de datos mediante persistencia en `localStorage`.
+**Asignatura:** Interacción Humano–Computador (IHC)  
+**Sistema:** Matrícula Universitaria (SGA UTA)  
+**Equipo:** Grupo 4 — Variante F (Matrícula)  
 
 ---
 
-## ðŸ“· Matriz Comparativa Antes / DespuÃ©s (v1 vs v2)
+## 📁 Archivos de Evidencia Generados
 
-| Momento Clave | Comportamiento en VersiÃ³n 1 (v1) | Comportamiento en VersiÃ³n 2 (v2) |
+1. **[curva-emocional-comparativa.svg](curva-emocional-comparativa.svg):** Diagrama vectorial cuantitativo que compara la curva de emoción observada en la versión inicial (v1) con valles críticos de `-2` frente a la versión refinada (v2) que mantiene la estabilidad emocional en `+1` y `+2`.
+2. **Registro de Sesión UX:** Documentado en [`../pruebas/sesion.md`](../pruebas/sesion.md) con participante anónimo `P-04-G2` (Grupo 2 - Pagos).
+3. **Métricas de Rendimiento:**
+   - Reducción del tiempo de tarea: de 145 segundos a 48 segundos.
+   - Reducción de errores críticos de 3 a 0.
+   - Eliminación de la pérdida de datos mediante persistencia en `localStorage`.
+
+---
+
+## 📷 Matriz Comparativa Antes / Después (v1 vs v2)
+
+| Momento Clave | Comportamiento en Versión 1 (v1) | Comportamiento en Versión 2 (v2) |
 | :--- | :--- | :--- |
-| **Prerrequisito Pendiente (Tarjeta 11)** | El estudiante intenta confirmar y la pantalla emite un error bloqueante genÃ©rico, borrando los datos. | El sistema avisa contextualmente al momento de seleccionar la materia y ofrece un botÃ³n para cambiar a la materia habilitada (*IHC*). |
-| **Conflicto de Cupo Concurrente (Tarjeta 12 / R7)** | Fallo silencioso; el usuario pierde la selecciÃ³n y se desorienta sin saber quÃ© pasÃ³. | Alerta audible (`aria-live="assertive"`) que informa la pÃ©rdida del cupo sin culpar al usuario, mantiene los datos y ofrece el Paralelo B o Lista de Espera con un solo clic. |
-| **NavegaciÃ³n por Teclado** | Foco invisible; el usuario ciego o que usa teclado pierde la ubicaciÃ³n en la pÃ¡gina. | Anillo de foco de 3px de alto contraste (`:focus-visible`), saltador de contenido (`.skip-link`) y control de foco con `Escape`. |
+| **Prerrequisito Pendiente (Tarjeta 11)** | El estudiante intenta confirmar y la pantalla emite un error bloqueante genérico, borrando los datos. | El sistema avisa contextualmente al momento de seleccionar la materia y ofrece un botón para cambiar a la materia habilitada (*IHC*). |
+| **Conflicto de Cupo Concurrente (Tarjeta 12 / R7)** | Fallo silencioso; el usuario pierde la selección y se desorienta sin saber qué pasó. | Alerta audible (`aria-live="assertive"`) que informa la pérdida del cupo sin culpar al usuario, mantiene los datos y ofrece el Paralelo B o Lista de Espera con un solo clic. |
+| **Navegación por Teclado** | Foco invisible; el usuario ciego o que usa teclado pierde la ubicación en la página. | Anillo de foco de 3px de alto contraste (`:focus-visible`), saltador de contenido (`.skip-link`) y control de foco con `Escape`. |
 
 
 ---
 
-# GuÃ­a Oficial de Defensa Individual y Respuestas para el Docente
+# Guía Oficial de Defensa Individual y Respuestas para el Docente
 
-**Asignatura:** InteracciÃ³n Humanoâ€“Computador (IHC) â€” Quinto Nivel  
-**Facultad:** FISEI â€” Universidad TÃ©cnica de Ambato  
-**Equipo:** Grupo 4 â€” Variante F: MatrÃ­cula Universitaria  
+**Asignatura:** Interacción Humano–Computador (IHC) — Quinto Nivel  
+**Facultad:** FISEI — Universidad Técnica de Ambato  
+**Equipo:** Grupo 4 — Variante F: Matrícula Universitaria  
 
-Esta guÃ­a contiene la preparaciÃ³n exhaustiva de las preguntas de defensa individual y los microcambios en vivo exigidos por la rÃºbrica de evaluaciÃ³n (SecciÃ³n 8 del documento docente).
+Esta guía contiene la preparación exhaustiva de las preguntas de defensa individual y los microcambios en vivo exigidos por la rúbrica de evaluación (Sección 8 del documento docente).
 
 ---
 
-## ðŸŽ¤ Preguntas Clave de la Tarjeta Asignada (Grupo 4)
+## 🎤 Preguntas Clave de la Tarjeta Asignada (Grupo 4)
 
-### 1. Pregunta Tarjeta 11: Â¿CÃ³mo impide una decisiÃ³n imposible sin dejar al estudiante sin salida?
+### 1. Pregunta Tarjeta 11: ¿Cómo impide una decisión imposible sin dejar al estudiante sin salida?
 > **Respuesta modelo:**  
-> *"La interfaz implementa el principio de prevenciÃ³n de errores (HeurÃ­stica H5 de Nielsen). En lugar de permitir que el estudiante pulse 'Confirmar' para luego mostrarle un error bloqueante que lo frustre, el sistema detecta de forma inmediata y contextual que la asignatura posee un prerrequisito pendiente. Crucialmente, la interfaz no se convierte en un 'callejÃ³n sin salida': en el mismo banner contextual explicativo se incorpora un control de acciÃ³n directa que le ofrece matricularse en una asignatura habilitada de su semestre (por ejemplo, InteracciÃ³n Humano-Computador). De este modo, se preserva el flujo cognitivo, se mantiene la autonomÃ­a del usuario (H3) y se evita que deba reiniciar el trÃ¡mite desde cero."*
+> *"La interfaz implementa el principio de prevención de errores (Heurística H5 de Nielsen). En lugar de permitir que el estudiante pulse 'Confirmar' para luego mostrarle un error bloqueante que lo frustre, el sistema detecta de forma inmediata y contextual que la asignatura posee un prerrequisito pendiente. Crucialmente, la interfaz no se convierte en un 'callejón sin salida': en el mismo banner contextual explicativo se incorpora un control de acción directa que le ofrece matricularse en una asignatura habilitada de su semestre (por ejemplo, Interacción Humano-Computador). De este modo, se preserva el flujo cognitivo, se mantiene la autonomía del usuario (H3) y se evita que deba reiniciar el trámite desde cero."*
 
-### 2. Pregunta Tarjeta 12: Â¿CÃ³mo demuestra que la interfaz nunca confirma un cupo inexistente?
+### 2. Pregunta Tarjeta 12: ¿Cómo demuestra que la interfaz nunca confirma un cupo inexistente?
 > **Respuesta modelo:**  
-> *"Lo demuestro mediante la arquitectura de dos fases de confirmaciÃ³n en JavaScript (`prototipo/v2/app.js`). Cuando el estudiante pulsa 'Confirmar MatrÃ­cula', el botÃ³n entra en estado de procesamiento (`disabled=true`) para prevenir dobles envÃ­os. El sistema simula la comprobaciÃ³n de concurrencia en el servidor. Si el cupo del Paralelo A fue tomado milisegundos antes por otro usuario, la interfaz **interrumpe la confirmaciÃ³n, nunca emite el cÃ³digo hash `MAT-UTA`** y transiciona a un estado de conflicto visible y audible. En este estado se anuncia mediante una regiÃ³n accesible con `aria-live="assertive"` que el cupo se agotÃ³, manteniendo todos los datos del estudiante intactos en `localStorage` y ofreciendo en pantalla una alternativa inmediata (Paralelo B con cupo disponible o inscripciÃ³n en lista de espera). SÃ³lo cuando se valida una plaza disponible real, se genera el comprobante definitivo."*
+> *"Lo demuestro mediante la arquitectura de dos fases de confirmación en JavaScript (`prototipo/v2/app.js`). Cuando el estudiante pulsa 'Confirmar Matrícula', el botón entra en estado de procesamiento (`disabled=true`) para prevenir dobles envíos. El sistema simula la comprobación de concurrencia en el servidor. Si el cupo del Paralelo A fue tomado milisegundos antes por otro usuario, la interfaz **interrumpe la confirmación, nunca emite el código hash `MAT-UTA`** y transiciona a un estado de conflicto visible y audible. En este estado se anuncia mediante una región accesible con `aria-live="assertive"` que el cupo se agotó, manteniendo todos los datos del estudiante intactos en `localStorage` y ofreciendo en pantalla una alternativa inmediata (Paralelo B con cupo disponible o inscripción en lista de espera). Sólo cuando se valida una plaza disponible real, se genera el comprobante definitivo."*
 
 ---
 
-## ðŸŽ¯ Respuestas a las Preguntas Generales de Defensa (SecciÃ³n 8)
+## 🎯 Respuestas a las Preguntas Generales de Defensa (Sección 8)
 
-### Pregunta 1: Abra el archivo que implementÃ³ y explique quÃ© requisito resuelve y cÃ³mo se comprueba.
-- **Elizabeth De la Cruz:** Abre `prototipo/v2/app.js`. Resuelve el requisito **R7 (GestiÃ³n de conflicto de cupo e incidencia sorpresa)** y **RF-05 (ConservaciÃ³n de borrador)**. Se comprueba al llenar los datos y confirmar: la primera vez simula que el cupo se agotÃ³; los datos no se borran y el usuario puede cambiar a Paralelo B en un solo clic.
-- **SebastiÃ¡n Vaca:** Abre `prototipo/v2/index.html` y `styles.css`. Resuelve el requisito **RF-02 (Accesibilidad 100% por teclado y foco)** y **RF-03 (Atributos semÃ¡nticos ARIA)**. Se comprueba navegando sin usar el ratÃ³n mediante `Tab` y `Shift + Tab`, verificando el anillo de foco azul de 3px y comprobando cÃ³mo un lector de pantalla verbaliza los avisos dinÃ¡micos mediante `aria-live`.
-- **VerÃ³nica Ana:** Abre `docs/diagnostico.md`, `diagramas/navegacion.md` y `pruebas/sesion.md`. Resuelve la trazabilidad de los momentos de verdad y la mitigaciÃ³n de los valles emocionales (-2 a +2). Se comprueba mostrando la curva emocional y el registro de la prueba con usuario donde se redujo el tiempo de la tarea de 145s a 48s.
+### Pregunta 1: Abra el archivo que implementó y explique qué requisito resuelve y cómo se comprueba.
+- **Elizabeth De la Cruz:** Abre `prototipo/v2/app.js`. Resuelve el requisito **R7 (Gestión de conflicto de cupo e incidencia sorpresa)** y **RF-05 (Conservación de borrador)**. Se comprueba al llenar los datos y confirmar: la primera vez simula que el cupo se agotó; los datos no se borran y el usuario puede cambiar a Paralelo B en un solo clic.
+- **Sebastián Vaca:** Abre `prototipo/v2/index.html` y `styles.css`. Resuelve el requisito **RF-02 (Accesibilidad 100% por teclado y foco)** y **RF-03 (Atributos semánticos ARIA)**. Se comprueba navegando sin usar el ratón mediante `Tab` y `Shift + Tab`, verificando el anillo de foco azul de 3px y comprobando cómo un lector de pantalla verbaliza los avisos dinámicos mediante `aria-live`.
+- **Verónica Ana:** Abre `docs/diagnostico.md`, `diagramas/navegacion.md` y `pruebas/sesion.md`. Resuelve la trazabilidad de los momentos de verdad y la mitigación de los valles emocionales (-2 a +2). Se comprueba mostrando la curva emocional y el registro de la prueba con usuario donde se redujo el tiempo de la tarea de 145s a 48s.
 
 ---
 
-### Pregunta 2: Localice un fallo en la curva emocional; enseÃ±e el Issue, su correcciÃ³n y el nuevo resultado.
-- **Fallo identificado:** En el Touchpoint 7 (PulsaciÃ³n de Confirmar con cupo agotado), la curva caÃ­a a `-2` (FrustraciÃ³n crÃ­tica) porque el sistema borraba el formulario.
-- **Issue enlazado:** `Issue #3: fix(recovery): PÃ©rdida irreversible de selecciÃ³n tras conflicto de concurrencia en cupo`.
-- **CorrecciÃ³n aplicada:** En `v2`, se implementÃ³ persistencia en `localStorage` y el modal de recuperaciÃ³n con alternativa de Paralelo B.
-- **Nuevo resultado:** En la curva despuÃ©s (v2), este punto sube a `+1` (Tranquilidad / Control), ya que el estudiante no pierde su tiempo ni sus datos.
+### Pregunta 2: Localice un fallo en la curva emocional; enseñe el Issue, su corrección y el nuevo resultado.
+- **Fallo identificado:** En el Touchpoint 7 (Pulsación de Confirmar con cupo agotado), la curva caía a `-2` (Frustración crítica) porque el sistema borraba el formulario.
+- **Issue enlazado:** `Issue #3: fix(recovery): Pérdida irreversible de selección tras conflicto de concurrencia en cupo`.
+- **Corrección aplicada:** En `v2`, se implementó persistencia en `localStorage` y el modal de recuperación con alternativa de Paralelo B.
+- **Nuevo resultado:** En la curva después (v2), este punto sube a `+1` (Tranquilidad / Control), ya que el estudiante no pierde su tiempo ni sus datos.
 
 ---
 
 ### Pregunta 3: Demuestre el recorrido de error sin perder datos del usuario.
-- **DemostraciÃ³n en vivo:**
+- **Demostración en vivo:**
   1. Abrir `prototipo/v2/index.html`.
   2. Presionar `Tab` hasta "Comenzar" y pulsar `Enter`.
-  3. Ingresar el cÃ³digo de estudiante `2026-UTA-0412`, seleccionar paralelo A y pulsar "Revisar".
-  4. En la pantalla de revisiÃ³n, pulsar "Confirmar".
-  5. Aparece la alerta roja de conflicto: *"El cupo del Paralelo A se agotÃ³ hace un instante. Tus datos estÃ¡n guardados."*
-  6. Pulsar el botÃ³n *"Cambiar a Paralelo B disponible"*.
-  7. El estudiante nota que su cÃ³digo y su selecciÃ³n siguen intactos en el formulario sin tener que volver a escribirlos.
+  3. Ingresar el código de estudiante `2026-UTA-0412`, seleccionar paralelo A y pulsar "Revisar".
+  4. En la pantalla de revisión, pulsar "Confirmar".
+  5. Aparece la alerta roja de conflicto: *"El cupo del Paralelo A se agotó hace un instante. Tus datos están guardados."*
+  6. Pulsar el botón *"Cambiar a Paralelo B disponible"*.
+  7. El estudiante nota que su código y su selección siguen intactos en el formulario sin tener que volver a escribirlos.
 
 ---
 
-### Pregunta 4: Explique por quÃ© la tÃ©cnica y la fidelidad elegidas responden al riesgo del caso.
-> *"Elegimos un prototipo funcional en cÃ³digo web nativo (HTML5/CSS/JS) con profundidad media-alta porque el riesgo central del sistema de matrÃ­cula es la **accesibilidad universal (WCAG)** y la **pÃ©rdida de datos por concurrencia en tiempo real**. Un prototipo estÃ¡tico en Figma o en papel no permite verificar si un lector de pantalla anuncia los cambios de estado (`aria-live`), ni comprobar si el teclado queda atrapado, ni demostrar la persistencia en almacenamiento local ante fallos."*
+### Pregunta 4: Explique por qué la técnica y la fidelidad elegidas responden al riesgo del caso.
+> *"Elegimos un prototipo funcional en código web nativo (HTML5/CSS/JS) con profundidad media-alta porque el riesgo central del sistema de matrícula es la **accesibilidad universal (WCAG)** y la **pérdida de datos por concurrencia en tiempo real**. Un prototipo estático en Figma o en papel no permite verificar si un lector de pantalla anuncia los cambios de estado (`aria-live`), ni comprobar si el teclado queda atrapado, ni demostrar la persistencia en almacenamiento local ante fallos."*
 
 ---
 
-### Pregunta 5: MuÃ©strenos un PR revisado por usted: Â¿quÃ© detectÃ³ y quÃ© se corrigiÃ³?
-> *"En el Pull Request `#2` correspondiente a la rama `feature/accesibilidad-y-conflicto`, durante la revisiÃ³n cruzada se detectÃ³ que el mensaje de cupo agotado utilizaba solo un cambio de color rojo (`.notice.bad`), lo cual violaba el criterio WCAG 1.4.1 (Uso del color) y no era anunciado por NVDA. Se solicitÃ³ y aplicÃ³ la correcciÃ³n agregando el atributo `role="alert"` y `aria-live="assertive"`, asegurando que el lector de pantalla interrumpa y verbalice de inmediato el estado al usuario ciego."*
+### Pregunta 5: Muéstrenos un PR revisado por usted: ¿qué detectó y qué se corrigió?
+> *"En el Pull Request `#2` correspondiente a la rama `feature/accesibilidad-y-conflicto`, durante la revisión cruzada se detectó que el mensaje de cupo agotado utilizaba solo un cambio de color rojo (`.notice.bad`), lo cual violaba el criterio WCAG 1.4.1 (Uso del color) y no era anunciado por NVDA. Se solicitó y aplicó la corrección agregando el atributo `role="alert"` y `aria-live="assertive"`, asegurando que el lector de pantalla interrumpa y verbalice de inmediato el estado al usuario ciego."*
 
 ---
 
-## ðŸ› ï¸ Microcambios en Vivo Preparados (Por si el docente solicita editar cÃ³digo)
+## 🛠️ Microcambios en Vivo Preparados (Por si el docente solicita editar código)
 
 1. **Modificar un mensaje de error:**
-   - En `prototipo/v2/app.js`, lÃ­nea 5: cambiar `'Este campo es obligatorio'` por `'Por favor, ingresa tu cÃ³digo de estudiante de la UTA'`.
+   - En `prototipo/v2/app.js`, línea 5: cambiar `'Este campo es obligatorio'` por `'Por favor, ingresa tu código de estudiante de la UTA'`.
 2. **Cambiar el color o grosor del foco de teclado:**
    - En `prototipo/v2/styles.css`, selector `:focus-visible`: cambiar `3px solid #0056b3` por `4px solid #d9381e` (rojo institucional) o `outline-offset: 4px`.
-3. **Cambiar el tiempo de simulaciÃ³n de carga:**
-   - En `prototipo/v2/app.js`, en `setTimeout(..., 700)`: cambiar `700` por `1200` milisegundos para mostrar una carga mÃ¡s prolongada.
+3. **Cambiar el tiempo de simulación de carga:**
+   - En `prototipo/v2/app.js`, en `setTimeout(..., 700)`: cambiar `700` por `1200` milisegundos para mostrar una carga más prolongada.
 4. **Agregar un nuevo campo al formulario:**
    - En `index.html`, agregar un `<input id="career" name="career">` y registrar su variable en `app.js`.
-
-
