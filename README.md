@@ -1,148 +1,82 @@
-# Examen Práctico — Interacción Humano-Computador (IHC)
+# Examen Práctico — Interacción Humano–Computador (IHC)
 
-Repositorio académico dedicado al análisis, diseño y evaluación de experiencias de usuario mediante prototipos web interactivos. Reúne una **prueba integradora** y **doce casos prácticos de IHC**, con énfasis en usabilidad, accesibilidad, validación, retroalimentación y recuperación ante errores.
-
-> **Nota:** Los escenarios, diagnósticos y recorridos de prueba incluidos son materiales de práctica o simulaciones. No deben presentarse como resultados de evaluaciones reales con participantes.
-
-## 📚 Contenido del repositorio
-
-| Proyecto | Descripción | Acceso |
-| --- | --- | --- |
-| **01. Prueba integradora IHC** | Escenario de reserva de tutorías universitarias. Incluye análisis UX, requisitos, diagramas, prototipos v1 y v2, documentación y guía de pruebas. | [Ver proyecto 01](PROYECTO_01_PRUEBA_INTEGRADORA/README.md) |
-| **02. Doce casos IHC** | Colección de doce ejercicios independientes, cada uno con un prototipo web y archivos de apoyo. | [Ver proyecto 02](PROYECTO_02_CASOS_IHC/README.md) |
-
-## 🎯 Objetivos
-
-- Aplicar principios de interacción humano-computador al diseño de interfaces.
-- Documentar requisitos, navegación, componentes y decisiones de diseño.
-- Diseñar flujos que comuniquen estados de carga, error y éxito.
-- Practicar validaciones, accesibilidad por teclado y recuperación de errores.
-- Comparar una versión inicial y una versión mejorada de un prototipo.
-
-## 🛠️ Tecnologías
-
-- **HTML5:** estructura de las interfaces.
-- **CSS3:** presentación y estilos visuales.
-- **JavaScript:** interacciones, validaciones y estados de los prototipos.
-- **Markdown:** documentación, diagramas descriptivos y guías de prueba.
-
-Los prototipos son estáticos: **no requieren instalar dependencias, configurar una base de datos ni ejecutar un backend**.
-
-## 📁 Estructura principal
-
-```text
-Examen_Practico-main/
-├── README.md
-├── PROYECTO_01_PRUEBA_INTEGRADORA/
-│   ├── README.md
-│   ├── diagramas/
-│   │   ├── navegacion.md
-│   │   └── sitemap.md
-│   ├── docs/
-│   │   ├── componentes.md
-│   │   ├── decisiones.md
-│   │   ├── defensa.md
-│   │   ├── diagnostico.md
-│   │   ├── requisitos.md
-│   │   └── trazabilidad.md
-│   ├── evidencias/
-│   ├── prototipo/
-│   │   ├── v1/
-│   │   └── v2/
-│   ├── pruebas/
-│   │   └── sesion.md
-│   └── wireframes/
-└── PROYECTO_02_CASOS_IHC/
-    ├── README.md
-    ├── casos/
-    │   ├── IHC-01/
-    │   ├── IHC-02/
-    │   ├── ...
-    │   └── IHC-12/
-    ├── componentes/
-    └── documentacion/
-        └── incidencias-sorpresa.md
-```
-
-Cada carpeta `IHC-XX` del segundo proyecto incluye `README.md`, `wireframes.md`, `pruebas.md` y un directorio `prototipo/` con `index.html`, `styles.css` y `app.js`.
-
-## 🚀 Cómo ejecutar los prototipos
-
-1. Descarga o clona el repositorio.
-2. Abre la carpeta del proyecto que deseas revisar.
-3. Abre el archivo `index.html` correspondiente en un navegador moderno.
-
-**Proyecto 01 — versión inicial:**
-
-```text
-PROYECTO_01_PRUEBA_INTEGRADORA/prototipo/v1/index.html
-```
-
-**Proyecto 01 — versión mejorada:**
-
-```text
-PROYECTO_01_PRUEBA_INTEGRADORA/prototipo/v2/index.html
-```
-
-**Proyecto 02 — ejemplo del caso IHC-01:**
-
-```text
-PROYECTO_02_CASOS_IHC/casos/IHC-01/prototipo/index.html
-```
-
-Para los demás casos, cambia `IHC-01` por el identificador correspondiente, hasta `IHC-12`.
-
-## 🧩 Proyecto 01: prueba integradora
-
-El escenario consiste en **reservar una tutoría universitaria**. Se documenta el recorrido del usuario desde el inicio de la reserva hasta su confirmación.
-
-Se incluyen dos versiones del prototipo:
-
-- **v1:** estructura funcional inicial y retroalimentación básica.
-- **v2:** mejoras en jerarquía visual, resumen previo, foco visible, mensajes accesibles y recuperación de errores.
-
-**Recorrido sugerido:** intentar enviar campos vacíos, completar el formulario, revisar los datos, provocar el error recuperable previsto y reintentar. También se recomienda navegar con `Tab`, `Shift + Tab`, `Enter` y `Escape`.
-
-**Documentos destacados:** [Requisitos](PROYECTO_01_PRUEBA_INTEGRADORA/docs/requisitos.md) · [Diagnóstico UX](PROYECTO_01_PRUEBA_INTEGRADORA/docs/diagnostico.md) · [Decisiones](PROYECTO_01_PRUEBA_INTEGRADORA/docs/decisiones.md) · [Trazabilidad](PROYECTO_01_PRUEBA_INTEGRADORA/docs/trazabilidad.md) · [Sesión de pruebas](PROYECTO_01_PRUEBA_INTEGRADORA/pruebas/sesion.md).
-
-## 🧪 Proyecto 02: doce casos prácticos
-
-Contiene los casos `IHC-01` a `IHC-12`, organizados como ejercicios independientes. Cada caso ofrece un escenario, requisitos, un prototipo navegable y archivos para revisar wireframes y pruebas.
-
-Para explorar un caso:
-
-1. Lee su `README.md` para conocer el escenario y la tarea crítica.
-2. Abre su prototipo `index.html`.
-3. Prueba los campos, la navegación por teclado y los mensajes de estado.
-4. Observa el error recuperable simulado en el primer intento de confirmación y el resultado del reintento.
-5. Consulta `pruebas.md` y `wireframes.md` para contrastar el recorrido.
-
-La documentación general incluye un archivo de incidencias sorpresa. Estas incidencias se registran como material documental y no deben confundirse con funcionalidades implementadas en los prototipos.
-
-## ♿ Aspectos de UX e IHC trabajados
-
-- Claridad de las acciones y del estado del sistema.
-- Prevención y comunicación de errores.
-- Conservación de datos ante fallos recuperables.
-- Navegación mediante teclado.
-- Retroalimentación durante la carga y la confirmación.
-- Documentación de flujos, componentes y trazabilidad.
-
-## 📌 Alcance y limitaciones
-
-Este repositorio es una **entrega académica de prototipos**, no una aplicación de producción. Las confirmaciones, errores y resultados visibles forman parte de los escenarios simulados. No hay persistencia real de reservas ni integración con servicios externos.
-
-Las evidencias, incidencias de GitHub, commits, solicitudes de cambio y resultados de participantes reales solo deben reportarse como realizados cuando efectivamente se hayan ejecutado y documentado.
-
-## 📖 Navegación rápida
-
-- [Documentación del Proyecto 01](PROYECTO_01_PRUEBA_INTEGRADORA/README.md)
-- [Documentación del Proyecto 02](PROYECTO_02_CASOS_IHC/README.md)
-- [Sitemap del Proyecto 01](PROYECTO_01_PRUEBA_INTEGRADORA/diagramas/sitemap.md)
-- [Navegación del Proyecto 01](PROYECTO_01_PRUEBA_INTEGRADORA/diagramas/navegacion.md)
+**Universidad Técnica de Ambato (UTA)**  
+**Facultad de Ingeniería en Sistemas, Electrónica e Industrial (FISEI)**  
+**Carrera de Software — Quinto Nivel**  
+**Período Académico:** 2026-B  
+**Equipo:** Grupo 4  
 
 ---
 
-**Asignatura:** Interacción Humano-Computador (IHC)  
-**Tipo de trabajo:** Proyecto académico / examen práctico  
-**Estado:** Material de práctica y prototipos disponibles para revisión.
+## 👥 Integrantes del Equipo (Grupo 4)
+
+| Integrante | Cuenta GitHub | Rol y Responsabilidad Principal |
+| :--- | :--- | :--- |
+| **Elizabeth De la Cruz** | [@Elizabeth1925](https://github.com/Elizabeth1925) | Líder de equipo, Prototipado v2, Lógica de recuperación ante conflictos e integración |
+| **Sebastián Vaca** | [@SebastianVaca](https://github.com) | Arquitectura de información, Accesibilidad WCAG (ARIA) y Foco por teclado |
+| **Verónica Ana** | [@anavero162](https://github.com) | Diagnóstico emocional, Sesión de pruebas de usabilidad y Trazabilidad de requisitos |
+
+---
+
+## 🎯 Caso Asignado: Variante F — Matrícula Universitaria
+
+De acuerdo con la distribución oficial de casos prácticos:
+- **Variante:** F
+- **Sistema:** Módulo de Matrícula y Selección de Asignaturas (SGA UTA).
+- **Problema Inicial:** Cupos, prerrequisitos, navegación y bloqueos.
+- **Tarjetas Privadas Evaluadas:**
+  - **Tarjeta 11 (IHC-11):** *Matrícula con prerrequisitos* — Estudiante con prerrequisito pendiente. Incidencia: *Mostrar prerrequisito y alternativa válida*.
+  - **Tarjeta 12 (IHC-12):** *Matrícula con lector de pantalla* — Estudiante con lector de pantalla y fallo de concurrencia de cupos. Incidencia: *Gestionar conflicto y anunciar nuevo estado accesible*.
+
+---
+
+## 📚 Estructura General del Repositorio
+
+| Directorio / Proyecto | Descripción y Alcance | Acceso Directo |
+| :--- | :--- | :---: |
+| **01. Prueba Integradora IHC** | Proyecto central de **Matrícula Universitaria**. Incluye diagnóstico UX, curva emocional, 7 requisitos (RF-01 a RF-06 + R7 Incidencia), diagramas, inventario Atomic Design, 4 wireframes, prototipos v1 y v2, registro de prueba empírica y guía de defensa individual. | [Ver Proyecto 01](PROYECTO_01_PRUEBA_INTEGRADORA/README.md) |
+| **02. Doce Casos IHC** | Colección de los doce ejercicios independientes de IHC, destacando la resolución de los casos **IHC-11** e **IHC-12** correspondientes a la temática de Matrícula del Grupo 4. | [Ver Proyecto 02](PROYECTO_02_CASOS_IHC/README.md) |
+
+---
+
+## 🚀 Cómo Ejecutar los Prototipos
+
+Los prototipos están desarrollados en tecnologías web estándares (HTML5, CSS3 y JavaScript vanilla): **no requieren instalación de paquetes, backend ni servidores locales**.
+
+1. **Proyecto 01 — Versión Inicial (v1 con fallos identificados):**
+   ```text
+   PROYECTO_01_PRUEBA_INTEGRADORA/prototipo/v1/index.html
+   ```
+2. **Proyecto 01 — Versión Refinada (v2 con Incidencias R7, WCAG y Teclado):**
+   ```text
+   PROYECTO_01_PRUEBA_INTEGRADORA/prototipo/v2/index.html
+   ```
+3. **Proyecto 02 — Casos Específicos del Grupo 4:**
+   - Caso IHC-11 (Prerrequisitos): `PROYECTO_02_CASOS_IHC/casos/IHC-11/prototipo/index.html`
+   - Caso IHC-12 (Lector y Concurrencia): `PROYECTO_02_CASOS_IHC/casos/IHC-12/prototipo/index.html`
+
+---
+
+## ♿ Puntos Clave de Usabilidad y Accesibilidad Implementados
+
+- **Operabilidad 100% por Teclado:** Toda la interfaz es navegable secuencialmente con `Tab` y `Shift + Tab`, activable con `Enter`/`Espacio`, con salto al contenido principal (`.skip-link`) y cierre o cancelación con `Escape`.
+- **Foco Visible de Alto Contraste:** Anillo de enfoque de 3px (`:focus-visible`) que cumple el criterio de éxito WCAG 2.4.7.
+- **Detección Preventiva de Prerrequisitos (Tarjeta 11):** Banner contextual que explica la materia correlativa faltante y proporciona un botón de redirección inmediata a asignaturas habilitadas sin perder datos.
+- **Gestión Accesible de Conflicto de Cupos (R7 / Tarjeta 12):** Notificación auditiva y visual inmediata mediante región viva (`aria-live="assertive"`), conservación del borrador en `localStorage` y alternativas de un clic (Paralelo B disponible o Lista de Espera).
+- **Reducción del Tiempo de Tarea:** Demostrada empíricamente en pruebas con usuario (reducción de 145s a 48s).
+
+---
+
+## 📖 Enlaces a la Documentación de la Prueba Integradora
+
+- [Diagnóstico UX y Curva Emocional Inicial](PROYECTO_01_PRUEBA_INTEGRADORA/docs/diagnostico.md)
+- [Catálogo de Requisitos Observables y R7](PROYECTO_01_PRUEBA_INTEGRADORA/docs/requisitos.md)
+- [Matriz de Trazabilidad Requisito → Pantalla → Componente](PROYECTO_01_PRUEBA_INTEGRADORA/docs/trazabilidad.md)
+- [Inventario de Componentes UI (Atomic Design)](PROYECTO_01_PRUEBA_INTEGRADORA/docs/componentes.md)
+- [Decisiones de Diseño y Justificación de Fidelidad](PROYECTO_01_PRUEBA_INTEGRADORA/docs/decisiones.md)
+- [Guía Oficial de Defensa Individual y Respuestas a Preguntas Docente](PROYECTO_01_PRUEBA_INTEGRADORA/docs/defensa.md)
+- [Diagramas de Flujo (User Flow) y Navegación](PROYECTO_01_PRUEBA_INTEGRADORA/diagramas/navegacion.md)
+- [Sitemap del Sistema](PROYECTO_01_PRUEBA_INTEGRADORA/diagramas/sitemap.md)
+- [Wireframes Lo-Fi](PROYECTO_01_PRUEBA_INTEGRADORA/wireframes/README.md)
+- [Registro de la Sesión de Pruebas UX con Participante](PROYECTO_01_PRUEBA_INTEGRADORA/pruebas/sesion.md)
+- [Evidencias y Curva Emocional Comparativa](PROYECTO_01_PRUEBA_INTEGRADORA/evidencias/README.md)

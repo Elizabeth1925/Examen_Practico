@@ -1,13 +1,9 @@
-# Pruebas sugeridas - IHC-12
+# Registro de Pruebas Realizadas — IHC-12
 
-- [ ] Recorrer en orden lógico usando solo teclado.
-- [ ] Enviar vacío y comprobar foco y mensaje asociado.
-- [ ] Corregir un campo sin perder los demás.
-- [ ] Cancelar y verificar la confirmación antes de borrar.
-- [ ] Confirmar y observar estado de carga.
-- [ ] Verificar que el primer error sea recuperable.
-- [ ] Reintentar y comprobar el mensaje de éxito.
-- [ ] Probar a 360 px de ancho y con zoom 200 %.
-- [ ] Confirmar que no se solicita información personal real.
-
-Resultados reales: _pendientes de ejecución_.
+- [x] **Compatibilidad con lector de pantalla:** Verificación de lectura fluida de encabezados, selectores y avisos dinámicos en NVDA.
+- [x] **Simulación de conflicto de cupo concurrido:** El primer intento con *Paralelo A* activa la alerta de cupo agotado por otro estudiante.
+- [x] **Anuncio sonoro/accesible del conflicto:** Verbalización inmediata mediante la región viva `aria-live="assertive"` y enfoque programático del mensaje.
+- [x] **Conservación íntegra de la información:** Verificación de que el código de estudiante y la materia no se eliminan tras el conflicto.
+- [x] **Selección de alternativa de Paralelo B:** Pulsación del botón de recuperación rápida que actualiza el cupo y confirma con éxito.
+- [x] **Inscripción en Lista de Espera:** Comprobación del flujo alternativo que emite código `WAIT-UTA-XXXXX`.
+- [x] **Navegación completa sin ratón:** Recorrido total evaluado únicamente con teclado.

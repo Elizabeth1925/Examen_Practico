@@ -1,8 +1,202 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reserva de tutoría</title><link rel="stylesheet" href="styles.css"></head><body>
-<a class="skip" href="#contenido">Saltar al contenido</a><header class="topbar"><div class="shell"><strong>Reserva de tutoría</strong><p>Prototipo local con datos ficticios · versión refinada</p></div></header>
-<main class="shell" id="contenido"><ol class="stepper" aria-label="Progreso"><li class="active">1. Inicio</li><li>2. Datos</li><li>3. Confirmación</li></ol>
-<section class="panel screen" id="start"><p class="eyebrow">Práctica integradora</p><h1>Reserva de tutoría</h1><p>Completa la tarea crítica con información simulada. Tus datos se conservan si aparece un error recuperable.</p><div class="notice">Puedes recorrer todo con Tab, Shift+Tab, Enter y Escape.</div><div class="actions"><button class="primary" data-next="form">Comenzar</button></div></section>
-<section class="panel screen hidden" id="form"><p class="eyebrow">Paso 2 de 3</p><h2>Ingresa los datos</h2><form id="taskForm" novalidate><div class="field"><label for="subject">Asignatura</label><select id="subject" name="subject" required aria-describedby="subject-error"><option value="">Selecciona una opción</option><option>Interacción Humano-Computador</option><option>Programación Web</option></select><p class="error" id="subject-error"></p></div><div class="field"><label for="tutor">Tutor</label><select id="tutor" name="tutor" required aria-describedby="tutor-error"><option value="">Selecciona una opción</option><option>Docente A</option><option>Docente B</option></select><p class="error" id="tutor-error"></p></div><div class="field"><label for="schedule">Horario</label><select id="schedule" name="schedule" required aria-describedby="schedule-error"><option value="">Selecciona una opción</option><option>Martes 10:00</option><option>Jueves 15:00</option></select><p class="error" id="schedule-error"></p></div><div class="field"><label for="reason">Motivo</label><textarea id="reason" name="reason" required maxlength="240" aria-describedby="reason-hint reason-error"></textarea><p class="hint" id="reason-hint">Máximo 240 caracteres. No incluyas datos sensibles.</p><p class="error" id="reason-error"></p></div><div id="formStatus" role="status" aria-live="polite"></div><div class="actions"><button type="button" class="secondary" data-back="start">Regresar</button><button type="button" class="danger" id="cancel">Cancelar</button><button type="submit" class="primary">Revisar</button></div></form></section>
-<section class="panel screen hidden" id="review"><p class="eyebrow">Paso 3 de 3</p><h2>Revisa antes de confirmar</h2><div class="summary" id="summary"><div><strong>Asignatura</strong><span data-value="subject"></span></div><div><strong>Tutor</strong><span data-value="tutor"></span></div><div><strong>Horario</strong><span data-value="schedule"></span></div><div><strong>Motivo</strong><span data-value="reason"></span></div></div><div class="actions"><button class="secondary" data-back="form">Editar</button><button class="primary" id="confirm">Confirmar</button></div></section>
-<section class="panel screen hidden" id="result" tabindex="-1"><p class="eyebrow">Resultado</p><h2 id="resultTitle">Operación completada</h2><div id="resultMessage" class="notice ok" role="status" aria-live="assertive"></div><div class="actions"><button class="primary" id="restart">Nueva operación</button></div></section></main>
-<footer class="shell">Práctica académica · No usa información personal real ni representa evidencia de una prueba ejecutada.</footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sistema de Matrícula Universitaria — Versión Accesible (v2)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Saltador de contenido accesible -->
+  <a class="skip" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="topbar">
+    <div class="shell header-content">
+      <div class="brand">
+        <span class="badge-uta">UTA · FISEI</span>
+        <strong>Sistema Integrado de Matrícula Universitaria (SGA)</strong>
+      </div>
+      <p class="meta-tag">Grupo 4 — Variante F · Accesible WCAG 2.1 AA</p>
+    </div>
+  </header>
+
+  <main class="shell" id="contenido">
+    <!-- Stepper de Progreso -->
+    <nav aria-label="Progreso de matrícula">
+      <ol class="stepper">
+        <li class="active" id="step-0"><span class="step-num">1</span> Inicio</li>
+        <li id="step-1"><span class="step-num">2</span> Selección</li>
+        <li id="step-2"><span class="step-num">3</span> Revisión</li>
+        <li id="step-3"><span class="step-num">4</span> Comprobante</li>
+      </ol>
+    </nav>
+
+    <!-- PANTALLA 1: Inicio -->
+    <section class="panel screen" id="start" tabindex="-1">
+      <div class="panel-header">
+        <span class="tag">Período Académico 2026-B</span>
+        <h1>Inscripción de Asignaturas de Software</h1>
+      </div>
+      <p class="lead">Bienvenido/a al portal oficial de matrícula. Selecciona tus materias y paralelos de forma asistida.</p>
+      
+      <div class="notice info" role="region" aria-label="Instrucciones de accesibilidad">
+        <strong>Operabilidad accesible:</strong> Este sistema puede manejarse íntegramente mediante teclado usando <kbd>Tab</kbd>, <kbd>Shift + Tab</kbd>, <kbd>Enter</kbd> y <kbd>Escape</kbd>. Los datos se guardan en borrador automáticamente.
+      </div>
+
+      <div class="actions">
+        <button class="primary btn-lg" data-next="form" id="btnStart">Iniciar Proceso de Matrícula</button>
+      </div>
+    </section>
+
+    <!-- PANTALLA 2: Formulario -->
+    <section class="panel screen hidden" id="form" tabindex="-1">
+      <div class="panel-header">
+        <span class="tag">Paso 2 de 4</span>
+        <h2>Selección Académica y Datos</h2>
+      </div>
+
+      <form id="taskForm" novalidate>
+        <!-- Selección de Asignatura -->
+        <div class="field">
+          <label for="subject">
+            Asignatura a Matricular <span class="req" aria-hidden="true">*</span>
+          </label>
+          <select id="subject" name="subject" required aria-describedby="subject-help subject-error">
+            <option value="">-- Selecciona una asignatura --</option>
+            <option value="Sistemas Distribuidos">Sistemas Distribuidos (Requiere Redes de Comunicación)</option>
+            <option value="Interacción Humano-Computador" selected>Interacción Humano-Computador (Habilitada · 5 Créditos)</option>
+            <option value="Ingeniería de Software II">Ingeniería de Software II (Habilitada · 4 Créditos)</option>
+            <option value="Bases de Datos Avanzadas">Bases de Datos Avanzadas (Habilitada · 4 Créditos)</option>
+          </select>
+          <p class="hint" id="subject-help">El sistema valida automáticamente prerrequisitos académicos.</p>
+          <p class="error" id="subject-error"></p>
+        </div>
+
+        <!-- Banner Contextual de Prerrequisitos (Tarjeta 11) -->
+        <div id="prereqNotice" class="notice warning hidden" role="alert" aria-live="polite">
+          <div class="notice-icon" aria-hidden="true">⚠️</div>
+          <div>
+            <strong>Restricción académica detectada (Prerrequisito pendiente):</strong>
+            <p id="prereqText">No puedes matricularte en <em>Sistemas Distribuidos</em> porque tienes pendiente la aprobación de <strong>Redes de Comunicación</strong>.</p>
+            <div class="notice-action">
+              <button type="button" class="btn-warning-alt" id="btnSwitchAltSubject">
+                👉 Seleccionar Interacción Humano-Computador (Habilitada)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selección de Paralelo -->
+        <div class="field">
+          <label for="parallel">
+            Paralelo y Disponibilidad de Cupos <span class="req" aria-hidden="true">*</span>
+          </label>
+          <select id="parallel" name="parallel" required aria-describedby="parallel-help parallel-error">
+            <option value="">-- Selecciona un paralelo disponible --</option>
+            <option value="Paralelo A" data-seats="1" data-schedule="Lunes y Miércoles 08:00 - 10:00 (Lab 2)">
+              Paralelo A — 1 cupo restante (Lunes/Miércoles 08:00-10:00)
+            </option>
+            <option value="Paralelo B" data-seats="3" data-schedule="Martes y Jueves 10:00 - 12:00 (Lab 4)">
+              Paralelo B — 3 cupos libres (Martes/Jueves 10:00-12:00)
+            </option>
+          </select>
+          <p class="hint" id="parallel-help">Los cupos se actualizan dinámicamente con el servidor académico.</p>
+          <p class="error" id="parallel-error"></p>
+        </div>
+
+        <!-- Código de Estudiante UTA -->
+        <div class="field">
+          <label for="studentCode">
+            Código o Matrícula de Estudiante UTA <span class="req" aria-hidden="true">*</span>
+          </label>
+          <input id="studentCode" name="studentCode" type="text" placeholder="Ej. 1805492145" required maxlength="15" aria-describedby="code-help studentCode-error">
+          <p class="hint" id="code-help">Ingresa tu número de cédula o código institucional único.</p>
+          <p class="error" id="studentCode-error"></p>
+        </div>
+
+        <!-- Notificación viva de cambios -->
+        <div id="formStatus" role="status" aria-live="polite" class="sr-only"></div>
+
+        <div class="actions">
+          <button type="button" class="secondary" data-back="start">Regresar</button>
+          <button type="button" class="danger" id="cancel">Cancelar Borrador</button>
+          <button type="submit" class="primary" id="btnSubmitForm">Revisar Matrícula</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- PANTALLA 3: Revisión Previa -->
+    <section class="panel screen hidden" id="review" tabindex="-1">
+      <div class="panel-header">
+        <span class="tag">Paso 3 de 4</span>
+        <h2>Revisión de la Solicitud de Matrícula</h2>
+      </div>
+      <p>Verifica cuidadosamente los datos antes de registrar la transacción oficial en el sistema.</p>
+
+      <div class="summary-box" id="summary">
+        <div class="summary-row">
+          <strong>Asignatura:</strong>
+          <span data-value="subject" class="summary-val">-</span>
+        </div>
+        <div class="summary-row">
+          <strong>Paralelo Asignado:</strong>
+          <span data-value="parallel" class="summary-val" id="summaryParallel">-</span>
+        </div>
+        <div class="summary-row">
+          <strong>Horario y Aula:</strong>
+          <span id="summarySchedule" class="summary-val">Aula Especialidad Software</span>
+        </div>
+        <div class="summary-row">
+          <strong>Código del Estudiante:</strong>
+          <span data-value="studentCode" class="summary-val">-</span>
+        </div>
+        <div class="summary-row">
+          <strong>Período Académico:</strong>
+          <span class="summary-val">2026-B (Quinto Nivel)</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="secondary" data-back="form" id="btnEditReview">Modificar Datos</button>
+        <button class="primary" id="confirm">Confirmar Matrícula Definitiva</button>
+      </div>
+    </section>
+
+    <!-- PANTALLA 4: Resultado y Conflicto Accesible -->
+    <section class="panel screen hidden" id="result" tabindex="-1">
+      <div class="panel-header">
+        <span class="tag">Paso 4 de 4</span>
+        <h2 id="resultTitle">Estado de la Matrícula</h2>
+      </div>
+
+      <!-- Caja Dinámica de Notificación (Assertive para errores, Polite para éxito) -->
+      <div id="resultMessage" class="notice" role="alert" aria-live="assertive"></div>
+
+      <!-- Opciones Rápidas de Resolución de Conflicto (Tarjeta 12 / R7) -->
+      <div id="conflictAlternatives" class="conflict-actions hidden">
+        <h3>Alternativas Inmediatas de Recuperación:</h3>
+        <p>No has perdido tus datos. Elige una de las siguientes opciones para asegurar tu cupo:</p>
+        <div class="alt-buttons">
+          <button type="button" class="btn-alt-primary" id="btnChooseParallelB">
+            ✅ Inscribirme en Paralelo B (3 cupos libres disponibles)
+          </button>
+          <button type="button" class="btn-alt-secondary" id="btnJoinWaitlist">
+            📋 Unirme a Lista de Espera del Paralelo A (Prioridad #1)
+          </button>
+        </div>
+      </div>
+
+      <div class="actions" id="resultActions">
+        <button class="primary" id="restart">Realizar Nueva Matrícula</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <p>Universidad Técnica de Ambato · FISEI · Carrera de Software</p>
+    <p>Interacción Humano–Computador · Proyecto Integrador — Grupo 4</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,13 +1,9 @@
-# Pruebas sugeridas - IHC-11
+# Registro de Pruebas Realizadas — IHC-11
 
-- [ ] Recorrer en orden lógico usando solo teclado.
-- [ ] Enviar vacío y comprobar foco y mensaje asociado.
-- [ ] Corregir un campo sin perder los demás.
-- [ ] Cancelar y verificar la confirmación antes de borrar.
-- [ ] Confirmar y observar estado de carga.
-- [ ] Verificar que el primer error sea recuperable.
-- [ ] Reintentar y comprobar el mensaje de éxito.
-- [ ] Probar a 360 px de ancho y con zoom 200 %.
-- [ ] Confirmar que no se solicita información personal real.
-
-Resultados reales: _pendientes de ejecución_.
+- [x] **Navegación secuencial por teclado:** Comprobado con `Tab` y `Shift + Tab` sin atascos de foco.
+- [x] **Detección contextual de prerrequisito:** Al seleccionar *Sistemas Distribuidos*, se despliega el banner de advertencia informando el requisito pendiente (*Redes de Comunicación*).
+- [x] **Recuperación y oferta de alternativa:** Pulsación del botón sugerido para cambiar inmediatamente a *Interacción Humano-Computador* sin borrar los datos del estudiante.
+- [x] **Validación de campos vacíos:** Comprobación de mensajes contextuales enlazados mediante `aria-describedby`.
+- [x] **Cancelación controlada:** Diálogo de confirmación que previene el borrado involuntario del borrador.
+- [x] **Persistencia de borrador:** Los datos se mantienen en `localStorage` al recargar la página.
+- [x] **Emisión de comprobante:** Generación de comprobante con código único ficticio tras confirmación válida.

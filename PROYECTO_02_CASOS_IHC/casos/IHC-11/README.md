@@ -1,27 +1,23 @@
-# IHC-11 - Matrícula con prerrequisitos
+# IHC-11 — Matrícula con Prerrequisitos (Tarjeta 11 · Grupo 4)
 
 ## Escenario
-
-- Persona: Estudiante con prerrequisito pendiente.
-- Tarea crítica: Inscribirse en una asignatura habilitada.
-- Restricción obligatoria: Explicar restricciones sin revelar datos ajenos.
-- Fallo adicional: El botón parece disponible, pero falla.
-
-La incidencia sorpresa está fuera de este caso y solo figura en la documentación general reservada.
+- **Persona:** Estudiante de software con prerrequisito académico pendiente.
+- **Tarea crítica:** Inscribirse en una asignatura habilitada de su semestre.
+- **Restricción obligatoria:** Explicar las restricciones académicas sin revelar datos ajenos y con navegación por teclado.
+- **Fallo inicial superado:** El botón inscribir parecía disponible pero fallaba al final.
+- **Incidencia Sorpresa Implementada:** *Mostrar prerrequisito y alternativa válida.* La interfaz detecta preventivamente el prerrequisito antes de la confirmación, explica la causa del bloqueo y ofrece una ruta inmediata hacia materias elegibles habilitadas sin perder datos.
 
 ## Ejecutar
+Abre `prototipo/index.html` en un navegador web.
 
-Abre `prototipo/index.html`. Prueba campos vacíos, recorrido por teclado, cancelación, primer error recuperable, conservación del borrador y segundo intento exitoso.
+## Requisitos Verificables
+1. **RF-01:** Mostrar el propósito del flujo y la oferta académica disponible.
+2. **RF-02:** Operar 100% mediante teclado (`Tab`, `Shift+Tab`, `Enter`, `Escape`).
+3. **RF-03:** Validar contextual de prerrequisitos sin exponer información sensible.
+4. **RF-04:** Presentar resumen previo antes de la persistencia de matrícula.
+5. **RF-05:** Conservar datos ingresados ante cualquier error recuperable (`localStorage`).
+6. **RF-06:** Anunciar estados de carga, error y éxito mediante regiones accesibles (`aria-live`).
+7. **R7 (Incidencia):** Ofrecer alternativa directa a materias habilitadas al detectar prerrequisito pendiente.
 
-## Requisitos verificables
-
-1. Mostrar el propósito y estado del flujo.
-2. Permitir completar la tarea crítica con teclado.
-3. Validar todos los campos y asociar cada mensaje.
-4. Presentar un resumen antes de confirmar.
-5. Conservar datos ante un error recuperable.
-6. Comunicar carga, error y éxito mediante regiones vivas.
-
-## Flujo
-
-Inicio → datos → [error contextual / revisión] → carga → [error recuperable → reintento] / [éxito → comprobante].
+## Flujo de Navegación
+`Inicio → Selección de Materia → [Alerta de Prerrequisito → Elección de Alternativa Habilitada] → Revisión de Datos → Confirmación → Comprobante Oficial.`

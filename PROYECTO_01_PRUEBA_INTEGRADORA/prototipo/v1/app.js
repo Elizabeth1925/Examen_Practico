@@ -1,12 +1,74 @@
-const screens=[...document.querySelectorAll('.screen')],form=document.querySelector('#taskForm'),confirmButton=document.querySelector('#confirm');
-const show=id=>{screens.forEach(s=>s.classList.toggle('hidden',s.id!==id));const target=document.querySelector('#'+id);target.querySelector('h1,h2,button,input,select,textarea')?.focus();};
-const setStep=id=>{const n={start:0,form:1,review:2,result:2}[id];document.querySelectorAll('.stepper li').forEach((li,i)=>li.classList.toggle('active',i<=n));};
-document.addEventListener('click',e=>{const next=e.target.dataset.next,back=e.target.dataset.back;if(next||back){const id=next||back;show(id);setStep(id);}});
-const validate=()=>{let ok=true;form.querySelectorAll('[required]').forEach(field=>{const error=document.querySelector('#'+field.id+'-error');let message='';if(!field.value.trim()) message='Este campo es obligatorio.';else if(field.type==='email'&&!field.validity.valid) message='Ingresa un correo con formato válido.';else if(field.type==='number'&&field.validity.rangeUnderflow) message='El valor es menor al permitido.';field.classList.toggle('invalid',!!message);field.setAttribute('aria-invalid',String(!!message));error.textContent=message;if(message&&ok){field.focus();ok=false;}});return ok;};
-form.addEventListener('submit',e=>{e.preventDefault();if(!validate())return;new FormData(form).forEach((value,key)=>{const out=document.querySelector('[data-value="'+key+'"]');if(out)out.textContent=value;});show('review');setStep('review');});
-form.addEventListener('input',e=>{const error=document.querySelector('#'+e.target.id+'-error');if(error){error.textContent='';e.target.classList.remove('invalid');e.target.setAttribute('aria-invalid','false');}localStorage.setItem('ihc-draft',JSON.stringify(Object.fromEntries(new FormData(form))));});
-try{const saved=JSON.parse(localStorage.getItem('ihc-draft')||'{}');Object.entries(saved).forEach(([k,v])=>{if(form.elements[k])form.elements[k].value=v;});}catch{}
-document.querySelector('#cancel').addEventListener('click',()=>{if(confirm('¿Cancelar y borrar el borrador?')){form.reset();localStorage.removeItem('ihc-draft');show('start');setStep('start');}});
-let simulateError=true;confirmButton.addEventListener('click',()=>{confirmButton.disabled=true;confirmButton.innerHTML='<span class="spinner" aria-hidden="true"></span> Procesando';setTimeout(()=>{confirmButton.disabled=false;confirmButton.textContent='Confirmar';const box=document.querySelector('#resultMessage');if(simulateError){simulateError=false;box.className='notice bad';box.textContent='No se pudo confirmar por una interrupción simulada. Tus datos siguen guardados. Regresa y vuelve a intentar.';document.querySelector('#resultTitle').textContent='Error recuperable';}else{box.className='notice ok';box.textContent='Confirmación simulada registrada. Código: DEMO-'+String(Date.now()).slice(-6);document.querySelector('#resultTitle').textContent='Operación completada';localStorage.removeItem('ihc-draft');}show('result');setStep('result');document.querySelector('#result').focus();},700);});
-document.querySelector('#restart').addEventListener('click',()=>{show(simulateError?'start':'form');setStep(simulateError?'start':'form');});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.querySelector('#form').classList.contains('hidden'))document.querySelector('#cancel').focus();});
+// Versión 1 (v1) - Prototipo con fallos iniciales de usabilidad
+const screens = [...document.querySelectorAll('.screen')];
+const form = document.querySelector('#taskForm');
+const confirmButton = document.querySelector('#confirm');
+
+const show = id => {
+  screens.forEach(s => s.classList.toggle('hidden', s.id !== id));
+};
+
+document.addEventListener('click', e => {
+  const next = e.target.dataset.next;
+  const back = e.target.dataset.back;
+  if (next || back) {
+    show(next || back);
+  }
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const sub = form.elements['subject'].value;
+  const par = form.elements['parallel'].value;
+  const code = form.elements['studentCode'].value.trim();
+
+  let hasError = false;
+  if (!sub) {
+    document.querySelector('#subject-error').textContent = 'Selecciona una materia.';
+    hasError = true;
+  }
+  if (!par) {
+    document.querySelector('#parallel-error').textContent = 'Selecciona un paralelo.';
+    hasError = true;
+  }
+  if (!code) {
+    document.querySelector('#studentCode-error').textContent = 'Ingresa tu código.';
+    hasError = true;
+  }
+
+  if (hasError) return;
+
+  new FormData(form).forEach((value, key) => {
+    const out = document.querySelector(`[data-value="${key}"]`);
+    if (out) out.textContent = value;
+  });
+
+  show('review');
+});
+
+let firstAttempt = true;
+confirmButton.addEventListener('click', () => {
+  confirmButton.disabled = true;
+  setTimeout(() => {
+    confirmButton.disabled = false;
+    const box = document.querySelector('#resultMessage');
+    const title = document.querySelector('#resultTitle');
+
+    if (firstAttempt) {
+      firstAttempt = false;
+      // Fallo v1: Error genérico y resetea el formulario completo
+      form.reset();
+      title.textContent = 'Error en el sistema';
+      box.className = 'notice bad';
+      box.textContent = 'Fallo en la transacción: No se pudo asignar cupo o prerrequisito no cumplido. Intente de nuevo.';
+    } else {
+      title.textContent = 'Matrícula Exitosa';
+      box.className = 'notice ok';
+      box.textContent = 'Matrícula completada. Código: MAT-V1-' + Math.floor(Math.random() * 900000 + 100000);
+    }
+    show('result');
+  }, 600);
+});
+
+document.querySelector('#restart').addEventListener('click', () => {
+  show('start');
+});
